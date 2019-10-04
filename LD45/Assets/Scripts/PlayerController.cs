@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
             Vector2 mouseScreenPos = Camera.main.ScreenToViewportPoint(Input.mousePosition);
 
             // Angle between two positions
-            float angle = AngleBetweenTwoPoints(mouseScreenPos, playerScreenPos);
+            float angle = AngleBetween(mouseScreenPos, playerScreenPos);
             
             // East
             if (angle >= -45.001f && angle <= 45.0f)
@@ -85,7 +85,7 @@ public class PlayerController : MonoBehaviour
 
     }
     
-    float AngleBetweenTwoPoints(Vector3 left, Vector3 right)
+    float AngleBetween(Vector3 left, Vector3 right)
     {
         return Mathf.Atan2(left.y - right.y, left.x - right.x) * Mathf.Rad2Deg;
     }
