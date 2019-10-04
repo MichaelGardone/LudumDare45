@@ -63,26 +63,25 @@ public class PlayerController : MonoBehaviour
                 gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - blinkDist, 0);
             }
         }
-        //else
-        //{
-            if(Input.GetKeyDown(KeyCode.W))
-            {
-                
-            }
-            if (Input.GetKeyDown(KeyCode.A))
-            {
 
-            }
-            if (Input.GetKeyDown(KeyCode.S))
-            {
 
-            }
-            if (Input.GetKeyDown(KeyCode.D))
-            {
+        float xVel = 0, yVel = 0;
 
-            }
-        //}
+        if (Input.GetKey(KeyCode.W))
+            yVel = Time.deltaTime * 10.0f * 20.0f;
+        else if(Input.GetKey(KeyCode.S))
+            yVel = -Time.deltaTime * 10.0f * 20.0f;
+        else
+            yVel = 0;
 
+        if (Input.GetKey(KeyCode.A))
+            xVel = -Time.deltaTime * 10.0f * 20.0f;
+        else if (Input.GetKey(KeyCode.D))
+            xVel = Time.deltaTime * 10.0f * 20.0f;
+        else
+            xVel = 0;
+        
+        rb.velocity = new Vector2(xVel, yVel);
     }
     
     float AngleBetween(Vector3 left, Vector3 right)
