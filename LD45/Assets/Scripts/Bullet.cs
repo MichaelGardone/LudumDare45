@@ -17,6 +17,5 @@ public class Bullet : MonoBehaviour
 
         if (currTime >= maxTimeUntilDisappear)
             Destroy(gameObject);
-
     }
 }
