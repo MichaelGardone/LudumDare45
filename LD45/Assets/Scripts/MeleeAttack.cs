@@ -14,12 +14,13 @@ public class MeleeAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
         print(collision);
+        if (hitPlayer)
+            return;
         if (collision.tag == "Player")
         {
             hitPlayer = true;
