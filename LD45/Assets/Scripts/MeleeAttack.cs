@@ -18,7 +18,7 @@ public class MeleeAttack : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        print(collision);
+        //print(collision);
         if (hitPlayer)
             return;
         if (collision.tag == "Player")
@@ -30,7 +30,6 @@ public class MeleeAttack : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        print(collision);
-
+        
     }
 }

@@ -2,29 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum PlayerFacing
-{
-    NORTH,
-    SOUTH,
-    EAST,
-    WEST
-}
-
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
 {
 
-    [SerializeField]
+    public delegate void LoseHealth(string key);
+    public LoseHealth lostKey;
+
     Dictionary<string, bool> availableKeys = new Dictionary<string, bool>();
 
     [SerializeField]
-    Queue<string> keys = new Queue<string>();
-
+    public Queue<string> keys = new Queue<string>();
+    
     [SerializeField]
-    PlayerFacing facing = PlayerFacing.EAST;
-
-    [SerializeField]
-    PlayerFacing facing2 = PlayerFacing.EAST;
+    EntityFacing facing = EntityFacing.EAST;
 
     [SerializeField]
     float blinkDist = 20.0f;
@@ -49,22 +40,21 @@ public class PlayerController : MonoBehaviour
     GameObject bulletPref;
 
     Rigidbody2D rb;
-    
+
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
 
         TextAsset txtAsset = (TextAsset)Resources.Load("keys", typeof(TextAsset));
         string[] keyFile = txtAsset.text.Split(new char[] { '\n' });
-
-        availableKeys.Add("Space", true);
-        foreach (string s in keyFile)
-        {
-            availableKeys.Add(s, false);
-        }
         
+        availableKeys.Add("Space", true);
         keys.Enqueue("Space");
+
+        foreach (string s in keyFile)
+            availableKeys.Add(s.Trim(), false);
+        
     }
 
     void Update()
@@ -80,67 +70,31 @@ public class PlayerController : MonoBehaviour
 
         // East
         if (angle >= -45.001f && angle <= 45.0f)
-        {
-            if ((angle >= -30.0f && angle <= 30.0f) || (angle >= 150.0f || angle <= -150.0f))
-                facing = PlayerFacing.EAST;
-            else if (angle > 30.0f && angle < 150.0f)
-                facing = PlayerFacing.NORTH;
-            else if (angle < -30.0f && angle > -150.0f)
-                facing = PlayerFacing.SOUTH;
-
-            facing2 = PlayerFacing.EAST;
-        }
+            facing = EntityFacing.EAST;
         // North
         else if (angle >= 45.001f && angle <= 135.0f)
-        {
-            if (angle >= -30.0f && angle <= 30.0f)
-                facing = PlayerFacing.EAST;
-            else if (angle >= 150.0f || angle <= -150.0f)
-                facing = PlayerFacing.WEST;
-            else if ((angle > 30.0f && angle < 150.0f) || (angle < -30.0f && angle > -150.0f))
-                facing = PlayerFacing.NORTH;
-
-            facing2 = PlayerFacing.NORTH;
-        }
+            facing = EntityFacing.NORTH;
         // West
         else if (angle >= 135.001f || angle <= -135.001f)
-        {
-            if ((angle >= -30.0f && angle <= 30.0f) || (angle >= 150.0f || angle <= -150.0f))
-                facing = PlayerFacing.WEST;
-            else if (angle > 30.0f && angle < 150.0f)
-                facing = PlayerFacing.NORTH;
-            else if (angle < -30.0f && angle > -150.0f)
-                facing = PlayerFacing.SOUTH;
-
-            facing2 = PlayerFacing.WEST;
-        }
+            facing = EntityFacing.WEST;
         // South
         else if (angle >= -135.0f && angle <= -45.0f)
-        {
-            if (angle >= -30.0f && angle <= 30.0f)
-                facing = PlayerFacing.EAST;
-            else if (angle >= 150.0f || angle <= -150.0f)
-                facing = PlayerFacing.WEST;
-            else if ((angle > 30.0f && angle < 150.0f) || (angle < -30.0f && angle > -150.0f))
-                facing = PlayerFacing.SOUTH;
-
-            facing2 = PlayerFacing.SOUTH;
-        }
+            facing = EntityFacing.SOUTH;
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            switch (facing2)
+            switch (facing)
             {
-                case PlayerFacing.EAST:
+                case EntityFacing.EAST:
                     gameObject.transform.position = new Vector3(gameObject.transform.position.x + blinkDist, gameObject.transform.position.y, 0);
                     break;
-                case PlayerFacing.NORTH:
+                case EntityFacing.NORTH:
                     gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + blinkDist, 0);
                     break;
-                case PlayerFacing.SOUTH:
+                case EntityFacing.SOUTH:
                     gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - blinkDist, 0);
                     break;
-                case PlayerFacing.WEST:
+                case EntityFacing.WEST:
                     gameObject.transform.position = new Vector3(gameObject.transform.position.x - blinkDist, gameObject.transform.position.y, 0);
                     break;
             }
@@ -182,10 +136,17 @@ public class PlayerController : MonoBehaviour
         return Mathf.Atan2(left.y - right.y, left.x - right.x) * Mathf.Rad2Deg;
     }
 
-    public void TakeDamage()
+    public void TakeDamage(int damage)
     {
-        string s = keys.Dequeue();
-        availableKeys[s] = false;
+        for(int i = 0; i < damage && i < keys.Count; i++)
+        {
+            string s = keys.Dequeue();
+            availableKeys[s] = false;
+            lostKey.Invoke(s);
+        }
+
+        if(keys.Count == 0)
+            Debug.Log("## PLAYER IS DEAD!! ##");
     }
 
     public void AddHealth(string s)

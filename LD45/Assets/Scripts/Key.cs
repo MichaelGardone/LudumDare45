@@ -12,12 +12,25 @@ public class Key : MonoBehaviour
     public delegate void TimerOut(string key);
     public TimerOut timeOut;
 
-    private void Update()
+    float maxTime, currTime;
+
+    private void Start()
     {
-        
+        maxTime = Random.Range(6, 8);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void Update()
+    {
+        currTime += Time.deltaTime;
+
+        if(currTime >= maxTime)
+        {
+            timeOut.Invoke(key);
+            Destroy(gameObject);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if(other.tag == "Player")
         {
