@@ -15,6 +15,12 @@ public class PlayerController : MonoBehaviour
 {
 
     [SerializeField]
+    Dictionary<string, bool> availableKeys = new Dictionary<string, bool>();
+
+    [SerializeField]
+    Queue<string> keys = new Queue<string>();
+
+    [SerializeField]
     PlayerFacing facing = PlayerFacing.EAST;
 
     [SerializeField]
@@ -23,6 +29,19 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     float blinkDist = 20.0f;
 
+    public float BlinkDist
+    {
+        get
+        {
+            return blinkDist;
+        }
+        protected set
+        {
+            blinkDist = value;
+        }
+    }
+
+
     [SerializeField]
     float initialBulletVel = 20.0f;
 
@@ -30,14 +49,24 @@ public class PlayerController : MonoBehaviour
     GameObject bulletPref;
 
     Rigidbody2D rb;
-
-
+    
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        TextAsset txtAsset = (TextAsset)Resources.Load("keys", typeof(TextAsset));
+        string[] keyFile = txtAsset.text.Split(new char[] { '\n' });
+
+        availableKeys.Add("Space", true);
+        foreach (string s in keyFile)
+        {
+            availableKeys.Add(s, false);
+        }
+        
+        keys.Enqueue("Space");
     }
-    
+
     void Update()
     {
         // Screen pos of player
@@ -119,23 +148,23 @@ public class PlayerController : MonoBehaviour
         
         float xVel = 0, yVel = 0;
 
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.W) && availableKeys["W"])
             yVel = Time.deltaTime * 10.0f * 20.0f;
-        else if(Input.GetKey(KeyCode.S))
+        else if(Input.GetKey(KeyCode.S) && availableKeys["S"])
             yVel = -Time.deltaTime * 10.0f * 20.0f;
         else
             yVel = 0;
 
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A) && availableKeys["A"])
             xVel = -Time.deltaTime * 10.0f * 20.0f;
-        else if (Input.GetKey(KeyCode.D))
+        else if (Input.GetKey(KeyCode.D) && availableKeys["D"])
             xVel = Time.deltaTime * 10.0f * 20.0f;
         else
             xVel = 0;
         
         rb.velocity = new Vector2(xVel, yVel);
 
-        if(Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1))
+        if((Input.GetMouseButtonDown(0) && availableKeys["LMB"]) || (Input.GetMouseButtonDown(1) && availableKeys["RMB"]))
         {
             Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 dir = mouseWorldPos - new Vector2(transform.transform.position.x, transform.transform.position.y);
@@ -151,6 +180,18 @@ public class PlayerController : MonoBehaviour
     float AngleBetween(Vector3 left, Vector3 right)
     {
         return Mathf.Atan2(left.y - right.y, left.x - right.x) * Mathf.Rad2Deg;
+    }
+
+    public void TakeDamage()
+    {
+        string s = keys.Dequeue();
+        availableKeys[s] = false;
+    }
+
+    public void AddHealth(string s)
+    {
+        keys.Enqueue(s);
+        availableKeys[s] = true;
     }
     
 }
