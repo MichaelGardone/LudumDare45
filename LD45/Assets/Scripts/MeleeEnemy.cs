@@ -11,8 +11,8 @@ public class MeleeEnemy : EnemyMaster
 
     [SerializeField]
     CircleCollider2D attack_radius;
-    
-    
+
+    MeleeAttack melee_attack;
 
     //timers*************************
     [SerializeField]
@@ -35,14 +35,14 @@ public class MeleeEnemy : EnemyMaster
     bool in_attack_phase = false;
     bool is_cooldown_phase = false;
 
-    bool hitPlayer;
+
     // Start is called before the first frame update
     void Start()
     {
         health_bar = gameObject.GetComponent<Slider>();
         target = GameObject.FindGameObjectWithTag("Player");
         attack_radius = GetComponentInChildren<CircleCollider2D>();
-        hitPlayer = GetComponentInChildren<MeleeAttack>().hitPlayer;
+        melee_attack = GetComponentInChildren<MeleeAttack>();
     }
 
     // Update is called once per frame
@@ -62,7 +62,7 @@ public class MeleeEnemy : EnemyMaster
                 print("Done With Cooldown");
                 attack_cooldown_timer = 0;
                 is_cooldown_phase = false;
-                hitPlayer = false;
+                
             }
         }
     }
@@ -78,8 +78,9 @@ public class MeleeEnemy : EnemyMaster
             if (!in_attack_phase && !is_dead)
             {
                 print("preparing attack");
-                
+                melee_attack.hitPlayer = false;
                 is_preparing_attack = true;
+                attack_radius.transform.position = transform.position;
                 attack_radius.transform.position = attack_radius.transform.position+ (target.transform.position - transform.position).normalized*.5f;
             }
                 

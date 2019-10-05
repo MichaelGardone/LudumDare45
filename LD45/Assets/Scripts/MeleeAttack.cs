@@ -18,7 +18,6 @@ public class MeleeAttack : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        //print(collision);
         if (hitPlayer)
             return;
         if (collision.tag == "Player")
