@@ -80,12 +80,12 @@ GameObject:
   - component: {fileID: 2477608427169897058}
   - component: {fileID: 2477608427169897061}
   m_Layer: 0
-  m_Name: MeleeEnemy
+  m_Name: BigMeleeEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2477608427169897060
 RectTransform:
   m_ObjectHideFlags: 0
@@ -167,11 +167,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79f3b63fd61477b4dab138759ce7c5c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 200
   health_bar: {fileID: 0}
   target: {fileID: 0}
   distance_til_stop: 1
-  movement_speed: 0.05
+  movement_speed: 0.035
   attack_radius: {fileID: 0}
   time_until_attack: 0.2
   attack_duration: 1
