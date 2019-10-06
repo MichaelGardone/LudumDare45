@@ -7,8 +7,16 @@ public class ProjectileEnemy : EnemyMaster
 {
 
     [SerializeField]
-    private float shooting_range;
-    
+    float movement_speed;
+
+    [SerializeField]
+    float seconds_until_next_shot;
+
+    [SerializeField]
+    float bullet_speed;
+
+    [SerializeField]
+    GameObject bullet_pref;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +27,36 @@ public class ProjectileEnemy : EnemyMaster
     // Update is called once per frame
     void Update()
     {
+        FollowPlayer();
+    }
+    void FollowPlayer()
+    {
+        if (Mathf.Abs(Vector2.Distance(transform.position, target.transform.position)) > distance_til_stop)
+        {
+            is_attacking = false;
+            transform.position += (target.transform.position - transform.position).normalized * movement_speed;
+        }
+        else
+        {
+            if(!is_attacking)
+            {
+                StartCoroutine(StartFiring());
+            }
+        }
+    }
+
+    IEnumerator StartFiring()
+    {
+        is_attacking = true;
+        while (true)
+        {
+            if (!is_attacking)
+                break;
+            Vector2 direction = (target.transform.position - transform.position).normalized;
+            GameObject bullet = Instantiate(bullet_pref, transform.position + (Vector3)direction, Quaternion.identity);
+            bullet.GetComponent<Rigidbody2D>().velocity = direction * bullet_speed;
+            yield return new WaitForSeconds(seconds_until_next_shot);
+        }
         
     }
 }
