@@ -129,19 +129,37 @@ public class PlayerController : MonoBehaviour
         
         float xVel = 0, yVel = 0;
 
-        if (Input.GetKey(KeyCode.W) && availableKeys["W"])
+        if (Input.GetKey(KeyCode.W))
+        {
             yVel = Time.deltaTime * 10.0f * 20.0f;
-        else if(Input.GetKey(KeyCode.S) && availableKeys["S"])
+            animControl.SetInteger("y_vel", 1);
+        }
+        else if(Input.GetKey(KeyCode.S))
+        {
             yVel = -Time.deltaTime * 10.0f * 20.0f;
+            animControl.SetInteger("y_vel", -1);
+        }
         else
+        {
             yVel = 0;
+            animControl.SetInteger("y_vel", 0);
+        }
 
-        if (Input.GetKey(KeyCode.A) && availableKeys["A"])
+        if (Input.GetKey(KeyCode.A))
+        {
             xVel = -Time.deltaTime * 10.0f * 20.0f;
-        else if (Input.GetKey(KeyCode.D) && availableKeys["D"])
+            animControl.SetInteger("x_vel", -1);
+        }
+        else if (Input.GetKey(KeyCode.D))
+        {
             xVel = Time.deltaTime * 10.0f * 20.0f;
+            animControl.SetInteger("x_vel", 1);
+        }
         else
+        {
             xVel = 0;
+            animControl.SetInteger("x_vel", 0);
+        }
         
         rb.velocity = new Vector2(xVel, yVel);
 
