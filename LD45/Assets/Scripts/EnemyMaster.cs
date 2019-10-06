@@ -42,12 +42,11 @@ public class EnemyMaster : MonoBehaviour
         
         health -= amount;
         if (health <= 0)
-            Die();
+            is_dead = true;
     }
 
-    void Die()
+    protected void Die()
     {
-        is_dead = true;
-        Destroy(this);
+        Destroy(gameObject);
     }
 }

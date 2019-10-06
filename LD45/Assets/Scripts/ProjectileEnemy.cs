@@ -28,6 +28,8 @@ public class ProjectileEnemy : EnemyMaster
     void Update()
     {
         FollowPlayer();
+        if (is_dead)
+            Die();
     }
     void FollowPlayer()
     {

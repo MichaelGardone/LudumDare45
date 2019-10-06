@@ -65,6 +65,8 @@ public class MeleeEnemy : EnemyMaster
                 
             }
         }
+        if (is_dead)
+            Die();
     }
 
     void Follow_Player()
