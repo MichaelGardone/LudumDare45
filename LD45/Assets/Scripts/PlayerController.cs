@@ -41,6 +41,9 @@ public class PlayerController : MonoBehaviour
 
     Rigidbody2D rb;
 
+    [SerializeField]
+    Animator animControl;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -70,16 +73,40 @@ public class PlayerController : MonoBehaviour
 
         // East
         if (angle >= -45.001f && angle <= 45.0f)
+        {
             facing = EntityFacing.EAST;
+            animControl.SetBool("east",  true);
+            animControl.SetBool("north", false);
+            animControl.SetBool("south", false);
+            animControl.SetBool("west",  false);
+        }
         // North
         else if (angle >= 45.001f && angle <= 135.0f)
+        {
             facing = EntityFacing.NORTH;
+            animControl.SetBool("east", false);
+            animControl.SetBool("north", true);
+            animControl.SetBool("south", false);
+            animControl.SetBool("west", false);
+        }
         // West
         else if (angle >= 135.001f || angle <= -135.001f)
+        {
             facing = EntityFacing.WEST;
+            animControl.SetBool("east", false);
+            animControl.SetBool("north", false);
+            animControl.SetBool("south", false);
+            animControl.SetBool("west", true);
+        }
         // South
         else if (angle >= -135.0f && angle <= -45.0f)
+        {
             facing = EntityFacing.SOUTH;
+            animControl.SetBool("east", false);
+            animControl.SetBool("north", false);
+            animControl.SetBool("south", true);
+            animControl.SetBool("west", false);
+        }
 
         if (Input.GetKeyDown(KeyCode.Space))
         {

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1931292728689931242}
   m_Layer: 0
   m_Name: Droog
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -168,3 +168,4 @@ MonoBehaviour:
   initialBulletVel: 20
   bulletPref: {fileID: 6731898159749784695, guid: ce82ae3e14c984f40b3eee7abe56ec0f,
     type: 3}
+  animControl: {fileID: 1931292728689931247}
