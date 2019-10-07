@@ -180,12 +180,13 @@ MonoBehaviour:
   health: 100
   health_bar: {fileID: 0}
   target: {fileID: 0}
-  distance_til_stop: 3
+  distance_til_stop: 6
   movement_speed: 0.025
   seconds_until_next_shot: 3
-  bullet_speed: 1
+  bullet_speed: 3
   bullet_pref: {fileID: 6731898159749784695, guid: 8cc890cf2228afb45be0826fde104ea8,
     type: 3}
+  seconds_until_fire: 1
 --- !u!95 &2846937821449361426
 Animator:
   serializedVersion: 3

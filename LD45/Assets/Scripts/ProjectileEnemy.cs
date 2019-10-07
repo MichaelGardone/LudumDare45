@@ -18,9 +18,15 @@ public class ProjectileEnemy : EnemyMaster
     [SerializeField]
     GameObject bullet_pref;
 
+    [SerializeField]
+    float seconds_until_fire;
     Animator anim;
     bool hover_down = false;
     bool hold = false;
+
+    bool on_cooldown = false;
+
+    int courtines_that_exist = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,13 +50,12 @@ public class ProjectileEnemy : EnemyMaster
         {
             is_attacking = false;
             transform.position += (target.transform.position - transform.position).normalized * movement_speed;
+            
         }
         else
         {
-            if(!is_attacking)
-            {
+            if (courtines_that_exist == 0)
                 StartCoroutine(StartFiring());
-            }
         }
     }
 
@@ -127,18 +132,31 @@ public class ProjectileEnemy : EnemyMaster
         StartCoroutine(Hover());
     }
     */
+
+    IEnumerator WaitToFire()
+    {
+        
+        yield return new WaitForSeconds(seconds_until_fire);
+        is_attacking = false;
+        
+    }
     IEnumerator StartFiring()
     {
         is_attacking = true;
+        courtines_that_exist = 1;
         while (true)
         {
+            
             if (!is_attacking)
                 break;
             Vector2 direction = (target.transform.position - transform.position).normalized;
             GameObject bullet = Instantiate(bullet_pref, transform.position + (Vector3)direction, Quaternion.identity);
             bullet.GetComponent<Rigidbody2D>().velocity = direction * bullet_speed;
             yield return new WaitForSeconds(seconds_until_next_shot);
+            if (!is_attacking)
+                break;
         }
-        
+        courtines_that_exist = 0;
+
     }
 }
