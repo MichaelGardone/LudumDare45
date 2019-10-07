@@ -9,6 +9,9 @@ public class UIManager : MonoBehaviour
     public static UIManager instance;
     Text score;
     Text wave;
+
+    [SerializeField]
+    Image black;
     int current_wave = 0;
     int enemies_killed = 0;
     [SerializeField]
@@ -20,6 +23,7 @@ public class UIManager : MonoBehaviour
     {
         score = GameObject.Find("Score").GetComponent<Text>();
         wave = GameObject.Find("Wave").GetComponent<Text>();
+        black = GameObject.Find("Black").GetComponent<Image>();
         if (instance == null)
         {
             instance = this;
@@ -45,12 +49,14 @@ public class UIManager : MonoBehaviour
             StartCoroutine(WaitFade());
         if (wave.text == "Wave Completed" && fade_out)
             NextWave();
-        if(wave.text == "Game Over" && fade_out)
+        if(black.enabled && fade_in && SceneManager.GetActiveScene().name != "Title")
         {
+            Destroy(WaveManager.instance.gameObject);
+            //Why can't I find the Title Scene by NAME!?? Or BUild INdex, It seems like it doesn't exist in the build settings but it does!!!!
             SceneManager.LoadScene(0);
-            WaveManager.instance = null;
-            Destroy(gameObject);
         }
+        if (SceneManager.GetActiveScene().name == "Title")
+            Destroy(gameObject);
     }   
 
     public void IncreaseScore()
@@ -58,10 +64,10 @@ public class UIManager : MonoBehaviour
         enemies_killed++;
     }
 
-    void GameOver()
+    public void GameOver()
     {
-        wave.text = "Game Over";
-        StartCoroutine(FadeTextToFullAlpha(1, wave));
+        black.enabled = true;
+        StartCoroutine(FadeTextToFullAlphaImage(3, black));
     }
 
     public void NextWave()
@@ -84,6 +90,19 @@ public class UIManager : MonoBehaviour
         fade_out = false;
         yield return new WaitForSeconds(1);
         StartCoroutine(FadeTextToZeroAlpha(1, wave));
+
+    }
+    public IEnumerator FadeTextToFullAlphaImage(float t, Image i)
+    {
+        fade_out = false;
+        
+        i.color = new Color(i.color.r, i.color.g, i.color.b, 0);
+        while (i.color.a < 1.0f)
+        {
+            i.color = new Color(i.color.r, i.color.g, i.color.b, i.color.a + (Time.deltaTime / t));
+            yield return null;
+        }
+        fade_in = true;
 
     }
     public IEnumerator FadeTextToFullAlpha(float t, Text i)

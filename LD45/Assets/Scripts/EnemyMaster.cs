@@ -41,11 +41,15 @@ public class EnemyMaster : MonoBehaviour
         
         health -= amount;
         if (health <= 0)
+        {
             is_dead = true;
+        }
+            
     }
 
     protected void Die()
     {
+        UIManager.instance.IncreaseScore();
         WaveManager.instance.AddToKilled();
         Destroy(gameObject);
     }

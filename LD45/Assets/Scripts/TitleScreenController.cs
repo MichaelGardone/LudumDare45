@@ -11,7 +11,7 @@ public class TitleScreenController : MonoBehaviour
     [SerializeField] Animator animator;
     void Start()
     {
-        
+        print("H" + SceneManager.GetActiveScene().buildIndex);
     }
 
     // Update is called once per frame

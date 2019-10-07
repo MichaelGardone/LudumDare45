@@ -257,7 +257,11 @@ public class PlayerController : MonoBehaviour
         }
 
         if(keys.Count == 0)
+        {
             Debug.Log("## PLAYER IS DEAD!! ##");
+            UIManager.instance.GameOver();
+        }
+            
     }
 
     public void AddHealth(string s)
