@@ -221,7 +221,7 @@ public class PlayerController : MonoBehaviour
             while (availableKeys[guns[currWep].name])
             {
                 currWep++;
-                if (currWep > guns.Length)
+                if (currWep >= guns.Length)
                     currWep = 0;
             }
             guns[currWep].GetComponent<SpriteRenderer>().enabled = true;
@@ -268,6 +268,18 @@ public class PlayerController : MonoBehaviour
         {
             string s = keys.Dequeue();
             availableKeys[s] = false;
+            if (s == "PISTOL")
+            {
+                guns[currWep].GetComponent<SpriteRenderer>().enabled = false;
+                while (availableKeys[guns[currWep].name])
+                {
+                    currWep++;
+                    if (currWep >= guns.Length)
+                        currWep = 0;
+                }
+                guns[currWep].GetComponent<SpriteRenderer>().enabled = true;
+                gunsCollected++;
+            }
             lostKey.Invoke(s);
         }
 
@@ -281,9 +293,21 @@ public class PlayerController : MonoBehaviour
             
     }
 
+    int gunsCollected = 0;
+
     public void AddHealth(string s)
     {
         keys.Enqueue(s);
+        if(gunsCollected == 0)
+        {
+            if(s == "PISTOL")
+            {
+                guns[currWep].GetComponent<SpriteRenderer>().enabled = false;
+                currWep = 0;
+                guns[currWep].GetComponent<SpriteRenderer>().enabled = true;
+                gunsCollected++;
+            }
+        }
         availableKeys[s] = true;
     }
     
