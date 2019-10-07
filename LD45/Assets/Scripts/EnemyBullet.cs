@@ -22,7 +22,7 @@ public class EnemyBullet : MonoBehaviour
     {
         if(collision.tag == "Player")
         {
-            if (collision.GetComponent<PlayerController>().keys.Count == 0)
+            if (collision.GetComponent<PlayerController>().keys.Count == 0 || collision.GetComponent<PlayerInvincible>().player_hit)
                 return;
             collision.GetComponent<PlayerController>().TakeDamage(1);
             //print("Hit");

@@ -24,9 +24,9 @@ public class WaveManager : MonoBehaviour
     GameObject red_mine;
     [SerializeField]
     GameObject green_mine;
-    int small_enemies_perc = 40;
-    int big_enemies_perc = 70;
-    int ranged_perc = 90;
+    int small_enemies_perc = 25;
+    int big_enemies_perc = 50;
+    int ranged_perc = 75;
     int mines_perc = 100;
 
     int enemies_killed = 0;

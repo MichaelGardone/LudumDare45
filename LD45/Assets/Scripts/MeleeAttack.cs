@@ -23,7 +23,7 @@ public class MeleeAttack : MonoBehaviour
         
         if (collision.tag == "Player")
         {
-            if (collision.GetComponent<PlayerController>().keys.Count == 0)
+            if (collision.GetComponent<PlayerController>().keys.Count == 0 || collision.GetComponent<PlayerInvincible>().player_hit)
                 return;
             hitPlayer = true;
             collision.GetComponent<PlayerController>().TakeDamage(1);
