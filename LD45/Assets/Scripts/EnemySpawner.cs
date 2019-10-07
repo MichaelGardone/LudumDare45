@@ -18,7 +18,9 @@ public class EnemySpawner : MonoBehaviour
 
     public void SpawnEnemy(GameObject gameObject)
     {
-        Instantiate(gameObject, transform.position, Quaternion.identity);
+        Vector3 spawn = transform.position;
+        spawn.z = -1;
+        Instantiate(gameObject, spawn, Quaternion.identity);
     }
 
 }
