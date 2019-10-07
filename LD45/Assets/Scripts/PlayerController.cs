@@ -53,6 +53,11 @@ public class PlayerController : MonoBehaviour
 
     bool dashOn = false;
 
+    [SerializeField]
+    float dashMax = 1.0f;
+
+    float dashCoolDown = 0.0f;
+    
     // Start is called before the first frame update
     void Awake()
     {
@@ -147,7 +152,7 @@ public class PlayerController : MonoBehaviour
 
             if (transform.position == targetDash)
             {
-                dashOn = false;
+                dashCoolDown += Time.deltaTime;
                 animControl.SetInteger("x_vel", 0);
                 animControl.SetInteger("y_vel", 0);
                 shadowControl.SetBool("dashing", false);
@@ -206,6 +211,16 @@ public class PlayerController : MonoBehaviour
         else
             animControl.SetBool("no_keys", true);
 
+        if(dashOn == false && dashCoolDown > 0)
+        {
+            dashCoolDown += Time.deltaTime;
+        }
+        else if (dashOn == false && dashCoolDown >= dashMax)
+        {
+            dashCoolDown = 0.0f;
+            dashOn = true;
+        }
+        
     }
     
     float AngleBetween(Vector3 left, Vector3 right)
