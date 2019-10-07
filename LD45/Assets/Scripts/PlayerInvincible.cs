@@ -19,14 +19,13 @@ public class PlayerInvincible : MonoBehaviour
     }
     IEnumerator Blink()
     {
-        print("Bilnk");
+        
+            
         while (player_hit)
         {
-            print("On");
-            GetComponent<SpriteRenderer>().enabled = !GetComponent<SpriteRenderer>().enabled;
+            if (GetComponent<PlayerController>().keys.Count > 0)
+                GetComponent<SpriteRenderer>().enabled = !GetComponent<SpriteRenderer>().enabled;
             yield return new WaitForSeconds(.1f);
-            
-            print("off");
         }
         
     }
@@ -36,6 +35,7 @@ public class PlayerInvincible : MonoBehaviour
         player_hit = true;
         StartCoroutine(Blink());
         yield return new WaitForSeconds(3);
+        GetComponent<SpriteRenderer>().enabled = true;
         player_hit = false;
     }
 }
