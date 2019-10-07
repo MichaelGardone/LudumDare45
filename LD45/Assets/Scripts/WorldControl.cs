@@ -25,6 +25,9 @@ public class WorldControl : MonoBehaviour
 
     float playerBlink;
 
+    [SerializeField]
+    LayerMask layer;
+
     private void Start()
     {
         maximumTime = Random.Range(maximumTime - minTimeOffset, maximumTime + maxTimeOffset);
@@ -70,7 +73,13 @@ public class WorldControl : MonoBehaviour
 
                         if (player.GetComponent<PlayerController>().keys.Count == 1)
                         {
-                            g.transform.position = new Vector3(player.transform.position.x + 20, player.transform.position.y, -1);
+                            g.transform.position = new Vector3(player.transform.position.x + 2, player.transform.position.y, -1);
+                        }
+                        
+                        RaycastHit ray;
+                        if(Physics.Raycast(g.transform.position, player.transform.position, out ray, Mathf.Infinity, layer))
+                        {
+                            Debug.Log("hello");
                         }
 
                         g.GetComponent<Key>().callback += RemoveKey;
