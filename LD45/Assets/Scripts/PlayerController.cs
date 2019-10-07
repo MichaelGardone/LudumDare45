@@ -59,7 +59,7 @@ public class PlayerController : MonoBehaviour
     
     Vector3 targetDash;
 
-    bool dashOn = false;
+    public bool dashOn = false;
 
     bool canDash = true;
 
@@ -134,19 +134,19 @@ public class PlayerController : MonoBehaviour
             switch (facing)
             {
                 case EntityFacing.EAST:
-                    targetDash = new Vector3(gameObject.transform.position.x + blinkDist, gameObject.transform.position.y, -1);
+                    targetDash = new Vector3(gameObject.transform.position.x + blinkDist, gameObject.transform.position.y, 0);
                     animControl.SetInteger("x_vel", 1);
                     break;
                 case EntityFacing.NORTH:
-                    targetDash = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + blinkDist, -1);
+                    targetDash = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + blinkDist, 0);
                     animControl.SetInteger("y_vel", 1);
                     break;
                 case EntityFacing.SOUTH:
-                    targetDash = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - blinkDist, -1);
+                    targetDash = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - blinkDist, 0);
                     animControl.SetInteger("y_vel", -1);
                     break;
                 case EntityFacing.WEST:
-                    targetDash = new Vector3(gameObject.transform.position.x - blinkDist, gameObject.transform.position.y, -1);
+                    targetDash = new Vector3(gameObject.transform.position.x - blinkDist, gameObject.transform.position.y, 0);
                     animControl.SetInteger("x_vel", -1);
                     break;
             }
