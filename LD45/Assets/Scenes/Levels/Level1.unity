@@ -689,10 +689,22 @@ PrefabInstance:
       propertyPath: HitSound
       value: 
       objectReference: {fileID: 8300000, guid: 14f0eff46187cd84e97274077ae173f5, type: 3}
+    - target: {fileID: 322800055, guid: 6e0db3a19bc8ba9458e8da7cf895fccb, type: 3}
+      propertyPath: ShottySound
+      value: 
+      objectReference: {fileID: 8300000, guid: 0b47d4f43a950ec4aa6b018032115cac, type: 3}
+    - target: {fileID: 1428417254, guid: 6e0db3a19bc8ba9458e8da7cf895fccb, type: 3}
+      propertyPath: ShottySound
+      value: 
+      objectReference: {fileID: 8300000, guid: 0b47d4f43a950ec4aa6b018032115cac, type: 3}
     - target: {fileID: 2062846966, guid: 6e0db3a19bc8ba9458e8da7cf895fccb, type: 3}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 907007f98faaf654faf8962bc1ffcd8e, type: 2}
+    - target: {fileID: 2062846969, guid: 6e0db3a19bc8ba9458e8da7cf895fccb, type: 3}
+      propertyPath: ShottySound
+      value: 
+      objectReference: {fileID: 8300000, guid: 0b47d4f43a950ec4aa6b018032115cac, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e0db3a19bc8ba9458e8da7cf895fccb, type: 3}
 --- !u!1 &356537601 stripped
