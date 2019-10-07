@@ -166,8 +166,11 @@ public class MeleeEnemy : EnemyMaster
         //print("ATTACK");
         is_attacking = true;
         attack_radius.enabled = true;
-        
-
+        if (facing == EntityFacing.NORTH)
+            spark_particle.GetComponent<SpriteRenderer>().sortingOrder = -1;
+        else
+            spark_particle.GetComponent<SpriteRenderer>().sortingOrder = 1;
+        spark_particle.SetActive(true);
     }
 
     /// <summary>
