@@ -37,6 +37,8 @@ public class Gun : MonoBehaviour
     [SerializeField]
     Transform start;
 
+    float angle;
+
     // Update is called once per frame
     void Update()
     {
@@ -69,7 +71,7 @@ public class Gun : MonoBehaviour
         Vector2 mouseScreenPos = Camera.main.ScreenToViewportPoint(Input.mousePosition);
 
         // Angle between two positions
-        float angle = AngleBetween(mouseScreenPos, objScreenPos);
+        angle = AngleBetween(mouseScreenPos, objScreenPos);
         
         if(angle <= 145f && angle >= -145f)
         {
@@ -103,11 +105,11 @@ public class Gun : MonoBehaviour
         Vector2 unnormDir = dir;
         dir.Normalize();
         
-        if(!onCoolDown)
+        if (!onCoolDown)
         {
             if (type == GunType.PISTOL)
             {
-                GameObject g = Instantiate(bulletPref, start.position, Quaternion.identity);
+                GameObject g = Instantiate(bulletPref, start.position, Quaternion.Euler(0,0,angle));
                 g.GetComponent<Bullet>().damage = 5;
                 g.GetComponent<Rigidbody2D>().velocity = dir * initialBulletVel;
                 // Play pistol sound
@@ -116,29 +118,29 @@ public class Gun : MonoBehaviour
             }
             else if(type == GunType.SHOTGUN)
             {
-                GameObject g = Instantiate(bulletPref, start.position, Quaternion.identity);
+                GameObject g = Instantiate(bulletPref, start.position, Quaternion.Euler(0,0,angle));
                 g.GetComponent<Bullet>().damage = 7;
                 g.GetComponent<Rigidbody2D>().velocity = dir * initialBulletVel;
 
-                g = Instantiate(bulletPref, start.position, Quaternion.identity);
+                g = Instantiate(bulletPref, start.position, Quaternion.Euler(0,0,angle));
                 g.GetComponent<Bullet>().damage = 7;
                 Vector2 dir2 = new Vector2(unnormDir.x + Random.Range(-1f, 1f), unnormDir.y + Random.Range(-1f, 1f));
                 dir2.Normalize();
                 g.GetComponent<Rigidbody2D>().velocity = dir2 * initialBulletVel;
 
-                g = Instantiate(bulletPref, start.position, Quaternion.identity);
+                g = Instantiate(bulletPref, start.position, Quaternion.Euler(0,0,angle));
                 g.GetComponent<Bullet>().damage = 7;
                 dir2 = new Vector2(unnormDir.x + Random.Range(-1f, 1f), unnormDir.y + Random.Range(-1f, 1f));
                 dir2.Normalize();
                 g.GetComponent<Rigidbody2D>().velocity = dir * initialBulletVel;
 
-                g = Instantiate(bulletPref, start.position, Quaternion.identity);
+                g = Instantiate(bulletPref, start.position, Quaternion.Euler(0,0,angle));
                 g.GetComponent<Bullet>().damage = 7;
                 dir2 = new Vector2(unnormDir.x + Random.Range(-1f, 1f), unnormDir.y + Random.Range(-0.5f, 0.25f));
                 dir2.Normalize();
                 g.GetComponent<Rigidbody2D>().velocity = dir * initialBulletVel;
 
-                g = Instantiate(bulletPref, start.position, Quaternion.identity);
+                g = Instantiate(bulletPref, start.position, Quaternion.Euler(0,0,angle));
                 g.GetComponent<Bullet>().damage = 7;
                 dir2 = new Vector2(unnormDir.x + Random.Range(-1f, 1f), unnormDir.y + Random.Range(-1f, 1f));
                 dir2.Normalize();
@@ -150,7 +152,7 @@ public class Gun : MonoBehaviour
             }
             else if(type == GunType.AK47)
             {
-                GameObject g = Instantiate(bulletPref, start.position, Quaternion.identity);
+                GameObject g = Instantiate(bulletPref, start.position, Quaternion.Euler(0,0,angle));
                 g.GetComponent<Bullet>().damage = 8;
                 g.GetComponent<Rigidbody2D>().velocity = dir * initialBulletVel;
                 // Play Ak47 sound
@@ -159,5 +161,6 @@ public class Gun : MonoBehaviour
             }
         }
     }
+    
 
 }

@@ -129,7 +129,7 @@ MonoBehaviour:
   droog: {fileID: 1931292728689931241}
   type: 2
   initialBulletVel: 20
-  bulletPref: {fileID: 6731898159749784695, guid: ce82ae3e14c984f40b3eee7abe56ec0f,
+  bulletPref: {fileID: 6731898159749784695, guid: 75a4f8183e9d0844f9a6666b3b40e2b0,
     type: 3}
   maxTimer: 0.25
   currTime: 0
@@ -640,7 +640,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1931292728689931244}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
