@@ -62,7 +62,7 @@ public class MeleeEnemy : EnemyMaster
             attack_cooldown_timer += Time.deltaTime;
             if(attack_cooldown_timer > attack_cooldown_duration)
             {
-                print("Done With Cooldown");
+                //print("Done With Cooldown");
                 attack_cooldown_timer = 0;
                 is_cooldown_phase = false;
                 
@@ -84,7 +84,7 @@ public class MeleeEnemy : EnemyMaster
             anim.SetBool("move", false);
             if (!in_attack_phase && !is_dead)
             {
-                print("preparing attack");
+                //print("preparing attack");
                 melee_attack.hitPlayer = false;
                 is_preparing_attack = true;
                 attack_radius.transform.position = transform.position;
@@ -152,7 +152,7 @@ public class MeleeEnemy : EnemyMaster
     }
     void Attack_Player()
     {
-        print("ATTACK");
+        //print("ATTACK");
         is_attacking = true;
         attack_radius.enabled = true;
 
@@ -168,7 +168,7 @@ public class MeleeEnemy : EnemyMaster
             attack_duration_timer += Time.deltaTime;
             if (attack_duration_timer > attack_duration)
             {
-                print("done attacking");
+                //print("done attacking");
                 attack_radius.enabled = false;
                 is_attacking = false;
                 attack_duration_timer = 0;

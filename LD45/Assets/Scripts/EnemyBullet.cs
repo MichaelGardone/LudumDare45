@@ -22,7 +22,7 @@ public class EnemyBullet : MonoBehaviour
     {
         if(collision.tag == "Player")
         {
-            print("Hit");
+            //print("Hit");
             //Deal Damage to Player
             Destroy(gameObject);
         }

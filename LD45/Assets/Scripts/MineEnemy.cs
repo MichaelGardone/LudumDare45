@@ -29,6 +29,8 @@ public class MineEnemy : EnemyMaster
         target = GameObject.FindGameObjectWithTag("Player");
         anim = gameObject.GetComponent<Animator>();
         anim.SetBool("is_following", false);
+        
+        
     }
 
     // Update is called once per frame

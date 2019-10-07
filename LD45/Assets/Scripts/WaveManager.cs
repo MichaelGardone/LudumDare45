@@ -44,21 +44,7 @@ public class WaveManager : MonoBehaviour
 
         
     }
-
-    void OnLevelWasLoaded(int level)
-    {
-        if (GameObject.FindGameObjectWithTag("Player") == null)
-            return;
-        wave++;
-        num_of_enemies += 5;
-        GameObject[] spawners = GameObject.FindGameObjectsWithTag("Spawner");
-        foreach (var t in spawners)
-            enemy_spawners.Add(t.GetComponent<EnemySpawner>());
-        StartCoroutine(BeginLevel());
-
-    }
-    // Start is called before the first frame update
-    void Start()
+    void InitializeWave()
     {
         print("Hi");
         if (GameObject.FindGameObjectWithTag("Player") == null)
@@ -70,6 +56,14 @@ public class WaveManager : MonoBehaviour
             enemy_spawners.Add(t.GetComponent<EnemySpawner>());
         StartCoroutine(BeginLevel());
 
+        print(num_of_enemies);
+    }
+    // Start is called before the first frame update
+    void Start()
+    {
+
+        InitializeWave();
+
     }
     IEnumerator BeginLevel()
     {
@@ -78,7 +72,7 @@ public class WaveManager : MonoBehaviour
     }
     IEnumerator StartSpawning()
     {
-        while(true)
+        while(enemies_spawned < num_of_enemies)
         {
             yield return new WaitForSeconds(spawn_per_second);
             int randomInt = Random.Range(0, enemy_spawners.Count);
@@ -102,7 +96,6 @@ public class WaveManager : MonoBehaviour
             }
             enemy_spawners[randomInt].SpawnEnemy(enemy);
             enemies_spawned++;
-            print("Spawn");
             if (enemies_spawned > num_of_enemies)
                 break;
             
@@ -120,10 +113,11 @@ public class WaveManager : MonoBehaviour
     {
         if(levelDone)
         {
+            //Reset Level
             enemies_killed = 0;
             levelDone = false;
             enemies_spawned = 0;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            InitializeWave();
         }
     }
 

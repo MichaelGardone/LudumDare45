@@ -22,14 +22,12 @@ public class EnemyMaster : MonoBehaviour
 
     protected bool is_dead = false;
 
-    [SerializeField]
-    WaveManager wave_manager;
 
     
     // Start is called before the first frame update
     void Start()
     {
-        wave_manager = FindObjectOfType<WaveManager>().GetComponent<WaveManager>();
+
     }
 
     // Update is called once per frame
@@ -48,7 +46,7 @@ public class EnemyMaster : MonoBehaviour
 
     protected void Die()
     {
-        wave_manager.AddToKilled();
+        WaveManager.instance.AddToKilled();
         Destroy(gameObject);
     }
 }
