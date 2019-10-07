@@ -32,6 +32,8 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    [SerializeField]
+    float dashSpeed = 10f;
 
     [SerializeField]
     float initialBulletVel = 20.0f;
@@ -39,10 +41,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     GameObject bulletPref;
 
-    Rigidbody2D rb;
-
     [SerializeField]
     Animator animControl;
+
+    Rigidbody2D rb;
+    
+    Vector3 targetDash;
+
+    bool dashOn = false;
 
     // Start is called before the first frame update
     void Awake()
@@ -59,7 +65,7 @@ public class PlayerController : MonoBehaviour
             availableKeys.Add(s.Trim(), false);
         
     }
-
+    
     void Update()
     {
         // Screen pos of player
@@ -108,61 +114,74 @@ public class PlayerController : MonoBehaviour
             animControl.SetBool("west", false);
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && dashOn == false)
         {
             switch (facing)
             {
                 case EntityFacing.EAST:
-                    gameObject.transform.position = new Vector3(gameObject.transform.position.x + blinkDist, gameObject.transform.position.y, 0);
+                    targetDash = new Vector3(gameObject.transform.position.x + blinkDist, gameObject.transform.position.y, 0);
                     break;
                 case EntityFacing.NORTH:
-                    gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + blinkDist, 0);
+                    targetDash = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + blinkDist, 0);
                     break;
                 case EntityFacing.SOUTH:
-                    gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - blinkDist, 0);
+                    targetDash = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - blinkDist, 0);
                     break;
                 case EntityFacing.WEST:
-                    gameObject.transform.position = new Vector3(gameObject.transform.position.x - blinkDist, gameObject.transform.position.y, 0);
+                    targetDash = new Vector3(gameObject.transform.position.x - blinkDist, gameObject.transform.position.y, 0);
                     break;
             }
+
+            dashOn = true;
+
         }
-        
+
         float xVel = 0, yVel = 0;
 
-        if (Input.GetKey(KeyCode.W) && availableKeys["W"])
+        if (dashOn)
         {
-            yVel = Time.deltaTime * 10.0f * 20.0f;
-            animControl.SetInteger("y_vel", 1);
-        }
-        else if(Input.GetKey(KeyCode.S) && availableKeys["S"])
-        {
-            yVel = -Time.deltaTime * 10.0f * 20.0f;
-            animControl.SetInteger("y_vel", -1);
+            transform.position = Vector3.MoveTowards(transform.position, targetDash, dashSpeed * Time.deltaTime);
+
+            if (transform.position == targetDash)
+                dashOn = false;
         }
         else
         {
-            yVel = 0;
-            animControl.SetInteger("y_vel", 0);
+            if (Input.GetKey(KeyCode.W) && availableKeys["W"])
+            {
+                yVel = Time.deltaTime * 10.0f * 20.0f;
+                animControl.SetInteger("y_vel", 1);
+            }
+            else if(Input.GetKey(KeyCode.S) && availableKeys["S"])
+            {
+                yVel = -Time.deltaTime * 10.0f * 20.0f;
+                animControl.SetInteger("y_vel", -1);
+            }
+            else
+            {
+                yVel = 0;
+                animControl.SetInteger("y_vel", 0);
+            }
+
+            if (Input.GetKey(KeyCode.A) && availableKeys["A"])
+            {
+                xVel = -Time.deltaTime * 10.0f * 20.0f;
+                animControl.SetInteger("x_vel", -1);
+            }
+            else if (Input.GetKey(KeyCode.D) && availableKeys["D"])
+            {
+                xVel = Time.deltaTime * 10.0f * 20.0f;
+                animControl.SetInteger("x_vel", 1);
+            }
+            else
+            {
+                xVel = 0;
+                animControl.SetInteger("x_vel", 0);
+            }
         }
 
-        if (Input.GetKey(KeyCode.A) && availableKeys["A"])
-        {
-            xVel = -Time.deltaTime * 10.0f * 20.0f;
-            animControl.SetInteger("x_vel", -1);
-        }
-        else if (Input.GetKey(KeyCode.D) && availableKeys["D"])
-        {
-            xVel = Time.deltaTime * 10.0f * 20.0f;
-            animControl.SetInteger("x_vel", 1);
-        }
-        else
-        {
-            xVel = 0;
-            animControl.SetInteger("x_vel", 0);
-        }
-        
         rb.velocity = new Vector2(xVel, yVel);
-
+        
         if((Input.GetMouseButtonDown(0) && availableKeys["LMB"]) || (Input.GetMouseButtonDown(1) && availableKeys["RMB"]))
         {
             Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
