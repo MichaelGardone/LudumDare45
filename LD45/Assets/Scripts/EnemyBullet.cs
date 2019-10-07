@@ -22,6 +22,7 @@ public class EnemyBullet : MonoBehaviour
     {
         if(collision.tag == "Player")
         {
+            collision.GetComponent<PlayerController>().TakeDamage(1);
             //print("Hit");
             //Deal Damage to Player
             Destroy(gameObject);

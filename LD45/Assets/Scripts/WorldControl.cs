@@ -36,6 +36,8 @@ public class WorldControl : MonoBehaviour
             openKeys.Add(s.Trim());
         
         playerBlink = player.GetComponent<PlayerController>().BlinkDist;
+
+        player.GetComponent<PlayerController>().lostKey += AddKey;
     }
 
     // Update is called once per frame

@@ -23,8 +23,9 @@ public class MeleeAttack : MonoBehaviour
         if (collision.tag == "Player")
         {
             hitPlayer = true;
-            //collision.GetComponent<PlayerController>().TakeDamage(1);
+            collision.GetComponent<PlayerController>().TakeDamage(1);
             print("Player Hit");
+
         }
     }
     
