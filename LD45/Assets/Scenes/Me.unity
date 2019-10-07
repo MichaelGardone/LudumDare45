@@ -462,27 +462,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1115900504 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2380917564121189245, guid: 634c48dc6e51c4e499894fdc751373d5,
-    type: 3}
-  m_PrefabInstance: {fileID: 2380917563072561445}
-  m_PrefabAsset: {fileID: 0}
---- !u!111 &1115900505
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1115900504}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!1001 &2380917563072561445
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -495,20 +474,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: ProjectileEnemy
       objectReference: {fileID: 0}
-    - target: {fileID: 2380917564121189245, guid: 634c48dc6e51c4e499894fdc751373d5,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2380917564121189246, guid: 634c48dc6e51c4e499894fdc751373d5,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5
+      value: -5.27
       objectReference: {fileID: 0}
     - target: {fileID: 2380917564121189246, guid: 634c48dc6e51c4e499894fdc751373d5,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.9
+      value: 2.82
       objectReference: {fileID: 0}
     - target: {fileID: 2380917564121189246, guid: 634c48dc6e51c4e499894fdc751373d5,
         type: 3}

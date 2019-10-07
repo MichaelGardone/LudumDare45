@@ -17,19 +17,26 @@ public class ProjectileEnemy : EnemyMaster
 
     [SerializeField]
     GameObject bullet_pref;
+
+    Animator anim;
+    bool hover_down = false;
+    bool hold = false;
     // Start is called before the first frame update
     void Start()
     {
         health_bar = gameObject.GetComponent<Slider>();
         target = GameObject.FindGameObjectWithTag("Player");
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        //print(hover_down);
         FollowPlayer();
         if (is_dead)
             Die();
+        GetAnims();
     }
     void FollowPlayer()
     {
@@ -47,6 +54,79 @@ public class ProjectileEnemy : EnemyMaster
         }
     }
 
+    float AngleBetween(Vector3 left, Vector3 right)
+    {
+        return Mathf.Atan2(left.y - right.y, left.x - right.x) * Mathf.Rad2Deg;
+    }
+    void GetAnims()
+    {
+
+        float angle = AngleBetween(target.transform.position, transform.position);
+        // East
+        if (angle >= -45.001f && angle <= 45.0f)
+        {
+            anim.SetBool("east", true);
+            anim.SetBool("north", false);
+            anim.SetBool("south", false);
+            anim.SetBool("west", false);
+        }
+        // North
+        else if (angle >= 45.001f && angle <= 135.0f)
+        {
+            anim.SetBool("east", false);
+            anim.SetBool("north", true);
+            anim.SetBool("south", false);
+            anim.SetBool("west", false);
+        }
+        // West
+        else if (angle >= 135.001f || angle <= -135.001f)
+        {
+            anim.SetBool("east", false);
+            anim.SetBool("north", false);
+            anim.SetBool("south", false);
+            anim.SetBool("west", true);
+        }
+        // South
+        else if (angle >= -135.0f && angle <= -45.0f)
+        {
+            anim.SetBool("east", false);
+            anim.SetBool("north", false);
+            anim.SetBool("south", true);
+            anim.SetBool("west", false);
+        }
+    }
+    /*
+    IEnumerator Hover()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1.58f);
+            break;
+        }
+        if (!hover_down)
+            StartCoroutine(Wait());
+        else
+        {
+            hover_down = false;
+            StartCoroutine(Hover());
+        }
+            
+        
+    }
+    IEnumerator Wait()
+    {
+        hold = true;
+        while (true)
+        {
+            yield return new WaitForSeconds(.91f);
+            print("Hover Down");
+            hold = false;
+            hover_down = true;
+            break;
+        }
+        StartCoroutine(Hover());
+    }
+    */
     IEnumerator StartFiring()
     {
         is_attacking = true;
