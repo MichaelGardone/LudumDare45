@@ -16,7 +16,7 @@ public class Key : MonoBehaviour
 
     private void Start()
     {
-        maxTime = Random.Range(6, 8);
+        maxTime = Random.Range(8, 12);
     }
 
     private void Update()
