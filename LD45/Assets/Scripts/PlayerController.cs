@@ -187,7 +187,7 @@ public class PlayerController : MonoBehaviour
                 animControl.SetInteger("y_vel", 0);
             }
 
-            if (Input.GetKey(KeyCode.A) && availableKeys["A"])
+            if (Input.GetKey(KeyCode.A) /*&& availableKeys["A"]*/)
             {
                 xVel = -Time.deltaTime * 10.0f * 20.0f;
                 animControl.SetInteger("x_vel", -1);
@@ -202,6 +202,7 @@ public class PlayerController : MonoBehaviour
                 xVel = 0;
                 animControl.SetInteger("x_vel", 0);
             }
+            
         }
 
         rb.velocity = new Vector2(xVel, yVel);
