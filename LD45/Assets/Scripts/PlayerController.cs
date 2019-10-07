@@ -53,6 +53,15 @@ public class PlayerController : MonoBehaviour
 
     bool dashOn = false;
 
+    bool canDash = true;
+
+    [SerializeField]
+    float dashMax = 1.0f;
+
+    [SerializeField]
+    float dashCoolDown = 0.0f;
+
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -113,7 +122,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && dashOn == false)
+        if (Input.GetKeyDown(KeyCode.Space) && dashOn == false && canDash)
         {
             switch (facing)
             {
@@ -135,6 +144,7 @@ public class PlayerController : MonoBehaviour
                     break;
             }
 
+            canDash = false;
             dashOn = true;
             shadowControl.SetBool("dashing", true);
         }
@@ -148,6 +158,7 @@ public class PlayerController : MonoBehaviour
             if (transform.position == targetDash)
             {
                 dashOn = false;
+                dashCoolDown += Time.deltaTime;
                 animControl.SetInteger("x_vel", 0);
                 animControl.SetInteger("y_vel", 0);
                 shadowControl.SetBool("dashing", false);
@@ -206,6 +217,15 @@ public class PlayerController : MonoBehaviour
         else
             animControl.SetBool("no_keys", true);
 
+        if(canDash == false && dashCoolDown > 0)
+            dashCoolDown += Time.deltaTime;
+
+        if (canDash == false && dashCoolDown >= dashMax)
+        {
+            dashCoolDown = 0.0f;
+            canDash = true;
+        }
+        
     }
     
     float AngleBetween(Vector3 left, Vector3 right)
