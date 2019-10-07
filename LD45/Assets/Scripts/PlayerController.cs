@@ -175,12 +175,12 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.W) && availableKeys["W"])
             {
-                yVel = Time.deltaTime * 10.0f * 20.0f;
+                yVel = Time.deltaTime * 10.0f * 40.0f;
                 animControl.SetInteger("y_vel", 1);
             }
             else if(Input.GetKey(KeyCode.S) && availableKeys["S"])
             {
-                yVel = -Time.deltaTime * 10.0f * 20.0f;
+                yVel = -Time.deltaTime * 10.0f * 40.0f;
                 animControl.SetInteger("y_vel", -1);
             }
             else
@@ -191,12 +191,12 @@ public class PlayerController : MonoBehaviour
 
             if (Input.GetKey(KeyCode.A) && availableKeys["A"])
             {
-                xVel = -Time.deltaTime * 10.0f * 20.0f;
+                xVel = -Time.deltaTime * 10.0f * 40.0f;
                 animControl.SetInteger("x_vel", -1);
             }
             else if (Input.GetKey(KeyCode.D) && availableKeys["D"])
             {
-                xVel = Time.deltaTime * 10.0f * 20.0f;
+                xVel = Time.deltaTime * 10.0f * 40.0f;
                 animControl.SetInteger("x_vel", 1);
             }
             else
@@ -273,7 +273,7 @@ public class PlayerController : MonoBehaviour
         {
             string s = keys.Dequeue();
             availableKeys[s] = false;
-            if (s == "PISTOL")
+            if (s == "PISTOL" || s == "AK47" || s == "SHOTGUN")
             {
                 guns[currWep].GetComponent<SpriteRenderer>().enabled = false;
                 while (availableKeys[guns[currWep].name])
@@ -283,7 +283,7 @@ public class PlayerController : MonoBehaviour
                         currWep = 0;
                 }
                 guns[currWep].GetComponent<SpriteRenderer>().enabled = true;
-                gunsCollected++;
+                gunsCollected--;
             }
             lostKey.Invoke(s);
         }
@@ -295,7 +295,14 @@ public class PlayerController : MonoBehaviour
             Debug.Log("## PLAYER IS DEAD!! ##");
             UIManager.instance.GameOver();
         }
-            
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(dashOn)
+        {
+            dashOn = false;
+        }
     }
 
     int gunsCollected = 0;
@@ -309,6 +316,20 @@ public class PlayerController : MonoBehaviour
             {
                 guns[currWep].GetComponent<SpriteRenderer>().enabled = false;
                 currWep = 0;
+                guns[currWep].GetComponent<SpriteRenderer>().enabled = true;
+                gunsCollected++;
+            }
+            else if(s == "AK47")
+            {
+                guns[currWep].GetComponent<SpriteRenderer>().enabled = false;
+                currWep = 2;
+                guns[currWep].GetComponent<SpriteRenderer>().enabled = true;
+                gunsCollected++;
+            }
+            else if(s == "SHOTGUN")
+            {
+                guns[currWep].GetComponent<SpriteRenderer>().enabled = false;
+                currWep = 1;
                 guns[currWep].GetComponent<SpriteRenderer>().enabled = true;
                 gunsCollected++;
             }
