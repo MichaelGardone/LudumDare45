@@ -98,7 +98,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 3cba92620c02d3a489f836432bbdb6a2, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -112,7 +112,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1931292728689931244}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -165,6 +165,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   facing: 2
   blinkDist: 20
+  dashSpeed: 10
   initialBulletVel: 20
   bulletPref: {fileID: 6731898159749784695, guid: ce82ae3e14c984f40b3eee7abe56ec0f,
     type: 3}
