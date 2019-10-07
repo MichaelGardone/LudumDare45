@@ -54,9 +54,9 @@ public class Gun : MonoBehaviour
             final.x = mousePos.x;
 
         if (mousePos.y > droog.position.y + outerRadius)
-            final.y = droog.position.x + outerRadius;
+            final.y = droog.position.y + outerRadius;
         else if(mousePos.y < droog.position.y - outerRadius)
-            final.y = droog.position.x - outerRadius;
+            final.y = droog.position.y - outerRadius;
         else
             final.y = mousePos.y;
 
@@ -99,7 +99,8 @@ public class Gun : MonoBehaviour
     public void Shoot()
     {
         Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 dir = mouseWorldPos - new Vector2(transform.transform.position.x, transform.transform.position.y);
+        Vector2 dir = mouseWorldPos - new Vector2(transform.position.x, transform.position.y);
+        Vector2 unnormDir = dir;
         dir.Normalize();
         
         if(!onCoolDown)
@@ -107,6 +108,7 @@ public class Gun : MonoBehaviour
             if (type == GunType.PISTOL)
             {
                 GameObject g = Instantiate(bulletPref, start.position, Quaternion.identity);
+                g.GetComponent<Bullet>().damage = 5;
                 g.GetComponent<Rigidbody2D>().velocity = dir * initialBulletVel;
                 // Play pistol sound
 
@@ -115,7 +117,33 @@ public class Gun : MonoBehaviour
             else if(type == GunType.SHOTGUN)
             {
                 GameObject g = Instantiate(bulletPref, start.position, Quaternion.identity);
+                g.GetComponent<Bullet>().damage = 7;
                 g.GetComponent<Rigidbody2D>().velocity = dir * initialBulletVel;
+
+                g = Instantiate(bulletPref, start.position, Quaternion.identity);
+                g.GetComponent<Bullet>().damage = 7;
+                Vector2 dir2 = new Vector2(unnormDir.x + Random.Range(-1f, 1f), unnormDir.y + Random.Range(-1f, 1f));
+                dir2.Normalize();
+                g.GetComponent<Rigidbody2D>().velocity = dir2 * initialBulletVel;
+
+                g = Instantiate(bulletPref, start.position, Quaternion.identity);
+                g.GetComponent<Bullet>().damage = 7;
+                dir2 = new Vector2(unnormDir.x + Random.Range(-1f, 1f), unnormDir.y + Random.Range(-1f, 1f));
+                dir2.Normalize();
+                g.GetComponent<Rigidbody2D>().velocity = dir * initialBulletVel;
+
+                g = Instantiate(bulletPref, start.position, Quaternion.identity);
+                g.GetComponent<Bullet>().damage = 7;
+                dir2 = new Vector2(unnormDir.x + Random.Range(-1f, 1f), unnormDir.y + Random.Range(-0.5f, 0.25f));
+                dir2.Normalize();
+                g.GetComponent<Rigidbody2D>().velocity = dir * initialBulletVel;
+
+                g = Instantiate(bulletPref, start.position, Quaternion.identity);
+                g.GetComponent<Bullet>().damage = 7;
+                dir2 = new Vector2(unnormDir.x + Random.Range(-1f, 1f), unnormDir.y + Random.Range(-1f, 1f));
+                dir2.Normalize();
+                g.GetComponent<Rigidbody2D>().velocity = dir * initialBulletVel;
+
                 // Play shotgun sound
 
                 onCoolDown = true;
@@ -123,6 +151,7 @@ public class Gun : MonoBehaviour
             else if(type == GunType.AK47)
             {
                 GameObject g = Instantiate(bulletPref, start.position, Quaternion.identity);
+                g.GetComponent<Bullet>().damage = 8;
                 g.GetComponent<Rigidbody2D>().velocity = dir * initialBulletVel;
                 // Play Ak47 sound
 

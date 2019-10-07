@@ -203,13 +203,13 @@ public class PlayerController : MonoBehaviour
 
         rb.velocity = new Vector2(xVel, yVel);
         
-        if((Input.GetMouseButton(0) && availableKeys["LMB"]) || (Input.GetMouseButton(1) && availableKeys["RMB"]))
+        if((Input.GetMouseButton(0) /*&& availableKeys["LMB"]*/) || (Input.GetMouseButton(1) && availableKeys["RMB"]))
         {
             if(guns[currWep].GetComponent<Gun>())
                 guns[currWep].GetComponent<Gun>().Shoot();
         }
 
-        if(Input.GetAxis("Mouse ScrollWheel") > 0f && availableKeys["SCROLL"])
+        if(Input.GetAxis("Mouse ScrollWheel") > 0f/* && availableKeys["SCROLL"]*/)
         {
             guns[currWep].GetComponent<SpriteRenderer>().enabled = false;
             currWep++;

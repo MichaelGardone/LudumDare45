@@ -11,6 +11,8 @@ public class Bullet : MonoBehaviour
     [SerializeField]
     float currTime;
 
+    public float damage = 10f;
+
     void LateUpdate()
     {
         currTime += Time.deltaTime;
@@ -19,11 +21,16 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if(other.tag == "Enemy")
         {
-            // Do damage
+            other.GetComponent<EnemyMaster>().Take_Damage(damage);
+        }
+
+        if(other.tag != "Bullet")
+        {
+            Destroy(gameObject);
         }
     }
 }
