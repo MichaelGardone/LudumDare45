@@ -46,7 +46,6 @@ public class WaveManager : MonoBehaviour
     }
     void InitializeWave()
     {
-        print("Hi");
         if (GameObject.FindGameObjectWithTag("Player") == null)
             return;
         wave++;
