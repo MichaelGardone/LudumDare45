@@ -183,6 +183,7 @@ public class MeleeEnemy : EnemyMaster
             attack_duration_timer += Time.deltaTime;
             if (attack_duration_timer > attack_duration)
             {
+                spark_particle.SetActive(false);
                 //print("done attacking");
                 attack_radius.enabled = false;
                 is_attacking = false;
