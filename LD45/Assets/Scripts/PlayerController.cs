@@ -68,50 +68,46 @@ public class PlayerController : MonoBehaviour
     
     void Update()
     {
-        // Screen pos of player
-        Vector2 playerScreenPos = Camera.main.WorldToViewportPoint(transform.position);
 
-        // Screen pos of mouse
-        Vector2 mouseScreenPos = Camera.main.ScreenToViewportPoint(Input.mousePosition);
+        if(dashOn == false)
+        {
+            // Screen pos of player
+            Vector2 playerScreenPos = Camera.main.WorldToViewportPoint(transform.position);
 
-        // Angle between two positions
-        float angle = AngleBetween(mouseScreenPos, playerScreenPos);
+            // Screen pos of mouse
+            Vector2 mouseScreenPos = Camera.main.ScreenToViewportPoint(Input.mousePosition);
 
-        // East
-        if (angle >= -45.001f && angle <= 45.0f)
-        {
-            facing = EntityFacing.EAST;
-            animControl.SetBool("east",  true);
-            animControl.SetBool("north", false);
-            animControl.SetBool("south", false);
-            animControl.SetBool("west",  false);
-        }
-        // North
-        else if (angle >= 45.001f && angle <= 135.0f)
-        {
-            facing = EntityFacing.NORTH;
-            animControl.SetBool("east", false);
-            animControl.SetBool("north", true);
-            animControl.SetBool("south", false);
-            animControl.SetBool("west", false);
-        }
-        // West
-        else if (angle >= 135.001f || angle <= -135.001f)
-        {
-            facing = EntityFacing.WEST;
-            animControl.SetBool("east", false);
-            animControl.SetBool("north", false);
-            animControl.SetBool("south", false);
-            animControl.SetBool("west", true);
-        }
-        // South
-        else if (angle >= -135.0f && angle <= -45.0f)
-        {
-            facing = EntityFacing.SOUTH;
-            animControl.SetBool("east", false);
-            animControl.SetBool("north", false);
-            animControl.SetBool("south", true);
-            animControl.SetBool("west", false);
+            // Angle between two positions
+            float angle = AngleBetween(mouseScreenPos, playerScreenPos);
+
+            // East
+            if (angle >= -45.001f && angle <= 45.0f)
+            {
+                facing = EntityFacing.EAST;
+                animControl.SetFloat("east_west", 1);
+                animControl.SetFloat("north_south", 0);
+            }
+            // North
+            else if (angle >= 45.001f && angle <= 135.0f)
+            {
+                facing = EntityFacing.NORTH;
+                animControl.SetFloat("east_west", 0);
+                animControl.SetFloat("north_south", 1);
+            }
+            // West
+            else if (angle >= 135.001f || angle <= -135.001f)
+            {
+                facing = EntityFacing.WEST;
+                animControl.SetFloat("east_west", -1);
+                animControl.SetFloat("north_south", 0);
+            }
+            // South
+            else if (angle >= -135.0f && angle <= -45.0f)
+            {
+                facing = EntityFacing.SOUTH;
+                animControl.SetFloat("east_west", 0);
+                animControl.SetFloat("north_south", -1);
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.Space) && dashOn == false)
@@ -120,15 +116,19 @@ public class PlayerController : MonoBehaviour
             {
                 case EntityFacing.EAST:
                     targetDash = new Vector3(gameObject.transform.position.x + blinkDist, gameObject.transform.position.y, 0);
+                    animControl.SetInteger("x_vel", 1);
                     break;
                 case EntityFacing.NORTH:
                     targetDash = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + blinkDist, 0);
+                    animControl.SetInteger("y_vel", 1);
                     break;
                 case EntityFacing.SOUTH:
                     targetDash = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - blinkDist, 0);
+                    animControl.SetInteger("y_vel", -1);
                     break;
                 case EntityFacing.WEST:
                     targetDash = new Vector3(gameObject.transform.position.x - blinkDist, gameObject.transform.position.y, 0);
+                    animControl.SetInteger("x_vel", -1);
                     break;
             }
 
@@ -143,7 +143,11 @@ public class PlayerController : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, targetDash, dashSpeed * Time.deltaTime);
 
             if (transform.position == targetDash)
+            {
                 dashOn = false;
+                animControl.SetInteger("x_vel", 0);
+                animControl.SetInteger("y_vel", 0);
+            }
         }
         else
         {
@@ -192,6 +196,11 @@ public class PlayerController : MonoBehaviour
             
             g.GetComponent<Rigidbody2D>().velocity = dir * initialBulletVel;
         }
+
+        if (keys.Count > 1)
+            animControl.SetBool("no_keys", false);
+        else
+            animControl.SetBool("no_keys", true);
 
     }
     
