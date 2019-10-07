@@ -10,7 +10,7 @@ public class WaveManager : MonoBehaviour
     int num_of_enemies = 0;
     int enemies_spawned = 0;
     public static WaveManager instance = null;
-    List<EnemySpawner> enemy_spawners;
+    List<EnemySpawner> enemy_spawners  = new List<EnemySpawner>();
     bool levelDone = false;
     [SerializeField]
     GameObject small_melee;
@@ -45,19 +45,31 @@ public class WaveManager : MonoBehaviour
         
     }
 
-    private void OnLevelWasLoaded(int level)
+    void OnLevelWasLoaded(int level)
     {
+        if (GameObject.FindGameObjectWithTag("Player") == null)
+            return;
         wave++;
         num_of_enemies += 5;
         GameObject[] spawners = GameObject.FindGameObjectsWithTag("Spawner");
         foreach (var t in spawners)
             enemy_spawners.Add(t.GetComponent<EnemySpawner>());
+        StartCoroutine(BeginLevel());
 
     }
     // Start is called before the first frame update
     void Start()
     {
-        
+        print("Hi");
+        if (GameObject.FindGameObjectWithTag("Player") == null)
+            return;
+        wave++;
+        num_of_enemies += 5;
+        GameObject[] spawners = GameObject.FindGameObjectsWithTag("Spawner");
+        foreach (var t in spawners)
+            enemy_spawners.Add(t.GetComponent<EnemySpawner>());
+        StartCoroutine(BeginLevel());
+
     }
     IEnumerator BeginLevel()
     {
@@ -90,6 +102,7 @@ public class WaveManager : MonoBehaviour
             }
             enemy_spawners[randomInt].SpawnEnemy(enemy);
             enemies_spawned++;
+            print("Spawn");
             if (enemies_spawned > num_of_enemies)
                 break;
             
