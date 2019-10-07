@@ -14,6 +14,8 @@ public class Key : MonoBehaviour
 
     float maxTime, currTime;
 
+    bool timerOn = true;
+
     private void Start()
     {
         maxTime = Random.Range(8, 12);
@@ -21,11 +23,13 @@ public class Key : MonoBehaviour
 
     private void Update()
     {
-        currTime += Time.deltaTime;
+        if(timerOn)
+            currTime += Time.deltaTime;
 
         if(currTime >= maxTime)
         {
-            timeOut.Invoke(key);
+            if (callback != null)
+                timeOut.Invoke(key);
             Destroy(gameObject);
         }
     }
@@ -34,7 +38,8 @@ public class Key : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            callback.Invoke(key);
+            if(callback != null)
+                callback.Invoke(key);
 
             other.GetComponent<PlayerController>().AddHealth(key);
 
