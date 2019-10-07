@@ -68,7 +68,7 @@ public class WorldControl : MonoBehaviour
 
                         if (player.GetComponent<PlayerController>().keys.Count == 1)
                         {
-                            g.transform.position = new Vector3(player.transform.position.x + 20, player.transform.position.y, 0);
+                            g.transform.position = new Vector3(player.transform.position.x + 20, player.transform.position.y, -1);
                         }
 
                         g.GetComponent<Key>().callback += RemoveKey;

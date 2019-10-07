@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 322800055}
   - component: {fileID: 2028851079}
   m_Layer: 0
-  m_Name: Ak47
+  m_Name: AK47
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -307,7 +307,7 @@ GameObject:
   - component: {fileID: 1428417254}
   - component: {fileID: 1963155212}
   m_Layer: 0
-  m_Name: Shotty
+  m_Name: SHOTGUN
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -613,7 +613,7 @@ GameObject:
   - component: {fileID: 2062846969}
   - component: {fileID: 166538826}
   m_Layer: 0
-  m_Name: Pistol
+  m_Name: PISTOL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
