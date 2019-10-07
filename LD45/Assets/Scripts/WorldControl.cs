@@ -79,7 +79,7 @@ public class WorldControl : MonoBehaviour
                         }
                         
                         RaycastHit ray;
-                        if(Physics.Raycast(g.transform.position, player.transform.position, out ray, Mathf.Infinity, layer))
+                        if(Physics2D.Raycast(g.transform.position, player.transform.position, out ray, Mathf.Infinity, layer))
                         {
                             hit = true;
                             Debug.Log("hello");
