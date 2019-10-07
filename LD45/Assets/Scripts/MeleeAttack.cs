@@ -20,6 +20,8 @@ public class MeleeAttack : MonoBehaviour
     {
         if (hitPlayer)
             return;
+        if (collision.GetComponent<PlayerController>().keys.Count == 0)
+            return;
         if (collision.tag == "Player")
         {
             hitPlayer = true;
