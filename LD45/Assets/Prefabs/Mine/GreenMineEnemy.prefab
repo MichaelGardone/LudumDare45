@@ -101,7 +101,9 @@ MonoBehaviour:
   health_bar: {fileID: 0}
   target: {fileID: 0}
   distance_til_stop: 1
-  type: 0
+  explosion: {fileID: 8374297697006875007, guid: d4358e3dd53ba0f4895869bfe8935772,
+    type: 3}
+  type: 1
   movement_speed: 0.05
   bullet_speed: 4
   bullet_pref: {fileID: 6731898159749784695, guid: 8cc890cf2228afb45be0826fde104ea8,

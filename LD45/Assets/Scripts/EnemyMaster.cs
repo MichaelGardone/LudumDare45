@@ -22,6 +22,8 @@ public class EnemyMaster : MonoBehaviour
 
     protected bool is_dead = false;
 
+    [SerializeField]
+    GameObject explosion;
 
     
     // Start is called before the first frame update
@@ -49,6 +51,7 @@ public class EnemyMaster : MonoBehaviour
 
     protected void Die()
     {
+        Instantiate(explosion, transform.position, Quaternion.identity);
         UIManager.instance.IncreaseScore();
         WaveManager.instance.AddToKilled();
         Destroy(gameObject);

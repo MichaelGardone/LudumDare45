@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6731898159749784682}
   - component: {fileID: 6731898159749784683}
   - component: {fileID: 6906802157564058863}
+  - component: {fileID: -1155714617445412914}
   m_Layer: 0
   m_Name: EnemyBullet
   m_TagString: Untagged
@@ -147,3 +148,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxTimeUntilDisappear: 5
   currTime: 0
+--- !u!95 &-1155714617445412914
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6731898159749784695}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fe6578b6d5dbe1d4980099845eb2c998, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

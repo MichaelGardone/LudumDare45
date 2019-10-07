@@ -101,7 +101,9 @@ MonoBehaviour:
   health_bar: {fileID: 0}
   target: {fileID: 0}
   distance_til_stop: 1
-  type: 0
+  explosion: {fileID: 8374297697006875007, guid: d4358e3dd53ba0f4895869bfe8935772,
+    type: 3}
+  type: 2
   movement_speed: 0.05
   bullet_speed: 4
   bullet_pref: {fileID: 6731898159749784695, guid: 8cc890cf2228afb45be0826fde104ea8,
@@ -117,7 +119,7 @@ Animator:
   m_GameObject: {fileID: 6998803214829635631}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0371a3aa8fef92141bc960c13f79372f, type: 2}
+  m_Controller: {fileID: 9100000, guid: 15192a73c9c3a89409587f39dced5f7d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

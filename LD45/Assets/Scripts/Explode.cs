@@ -21,8 +21,8 @@ public class Explode : MonoBehaviour
 
     IEnumerator WaitThenDie()
     {
-        AS.PlayOneShot(explode);
-        yield return new WaitForSeconds(1.05f);
+        //AS.PlayOneShot(explode);
+        yield return new WaitForSeconds(.6f);
         Destroy(gameObject);
     }
 }
