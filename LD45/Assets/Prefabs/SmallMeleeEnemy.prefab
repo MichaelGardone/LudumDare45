@@ -173,9 +173,11 @@ MonoBehaviour:
   health_bar: {fileID: 0}
   target: {fileID: 0}
   distance_til_stop: 1
+  explosion: {fileID: 0}
   movement_speed: 5
   attack_radius: {fileID: 0}
-  spark_particle: {fileID: 8601005145982634757}
+  spark_particle: {fileID: 1147622451286421988, guid: 30c6b4aad5adf3e459e7c8a8a86f0cd7,
+    type: 3}
   time_until_attack: 0.2
   attack_duration: 1
   time_stunned: 0
@@ -324,12 +326,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90326665f9a20c24981a5ea832cc6560, type: 3}
---- !u!1 &8601005145982634757 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3597784656988712487, guid: 90326665f9a20c24981a5ea832cc6560,
-    type: 3}
-  m_PrefabInstance: {fileID: 5093868636711658786}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7508427629330603736 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3351317680375806970, guid: 90326665f9a20c24981a5ea832cc6560,
