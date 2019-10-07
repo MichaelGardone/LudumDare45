@@ -25,7 +25,9 @@ public class EnemyMaster : MonoBehaviour
     [SerializeField]
     GameObject explosion;
 
-    
+    [SerializeField] AudioClip HitSound;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,7 +42,7 @@ public class EnemyMaster : MonoBehaviour
 
     public void Take_Damage(float amount)
     {
-        
+        GetComponent<AudioSource>().PlayOneShot(HitSound);
         health -= amount;
         if (health <= 0)
         {
