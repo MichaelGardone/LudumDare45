@@ -384,10 +384,16 @@ PrefabInstance:
     - target: {fileID: 1931292728689931242, guid: 6e0db3a19bc8ba9458e8da7cf895fccb,
         type: 3}
       propertyPath: dashSpeed
-      value: 2
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e0db3a19bc8ba9458e8da7cf895fccb, type: 3}
+--- !u!1 &356537601 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1931292728689931244, guid: 6e0db3a19bc8ba9458e8da7cf895fccb,
+    type: 3}
+  m_PrefabInstance: {fileID: 356537600}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &366637515
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5352,6 +5358,7 @@ GameObject:
   - component: {fileID: 1140804174}
   - component: {fileID: 1140804173}
   - component: {fileID: 1140804172}
+  - component: {fileID: 1140804175}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -5424,6 +5431,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1140804175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1140804171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7d0b477ba0f53849bf58494efe98c2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 356537601}
 --- !u!1001 &1274553255
 PrefabInstance:
   m_ObjectHideFlags: 0

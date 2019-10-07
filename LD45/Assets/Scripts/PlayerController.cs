@@ -44,6 +44,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     Animator animControl;
 
+    [SerializeField]
+    Animator shadowControl;
+
     Rigidbody2D rb;
     
     Vector3 targetDash;
@@ -133,7 +136,7 @@ public class PlayerController : MonoBehaviour
             }
 
             dashOn = true;
-
+            shadowControl.SetBool("dashing", true);
         }
 
         float xVel = 0, yVel = 0;
@@ -147,6 +150,7 @@ public class PlayerController : MonoBehaviour
                 dashOn = false;
                 animControl.SetInteger("x_vel", 0);
                 animControl.SetInteger("y_vel", 0);
+                shadowControl.SetBool("dashing", false);
             }
         }
         else
