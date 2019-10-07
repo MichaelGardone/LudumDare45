@@ -182,7 +182,8 @@ MonoBehaviour:
   health_bar: {fileID: 0}
   target: {fileID: 0}
   distance_til_stop: 6
-  explosion: {fileID: 0}
+  explosion: {fileID: 8374297697006875007, guid: 73a6d7d64a57f4b49acbc0697cdc1af8,
+    type: 3}
   HitSound: {fileID: 0}
   movement_speed: 0.025
   seconds_until_next_shot: 3
