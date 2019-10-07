@@ -186,7 +186,7 @@ MonoBehaviour:
   distance_til_stop: 6
   explosion: {fileID: 8374297697006875007, guid: 73a6d7d64a57f4b49acbc0697cdc1af8,
     type: 3}
-  HitSound: {fileID: 0}
+  HitSound: {fileID: 8300000, guid: 14f517605fd9dca4f90f48a29746624a, type: 3}
   movement_speed: 0.025
   seconds_until_next_shot: 3
   bullet_speed: 3
@@ -224,7 +224,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.651
   m_Pitch: 1
   Loop: 0
   Mute: 0
