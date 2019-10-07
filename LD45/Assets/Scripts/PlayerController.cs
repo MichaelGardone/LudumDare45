@@ -68,7 +68,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     float dashCoolDown = 0.0f;
-    
+
+    [SerializeField] AudioClip HitSound;
     void Awake()
     {
         playerInvincible = GetComponent<PlayerInvincible>();
@@ -266,6 +267,7 @@ public class PlayerController : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        GetComponent<AudioSource>().PlayOneShot(HitSound);
         StartCoroutine(playerInvincible.WaitTilCanGetHit());
         for(int i = 0; i < damage && i < keys.Count; i++)
         {
