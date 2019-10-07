@@ -39,10 +39,21 @@ public class Gun : MonoBehaviour
 
     float angle;
 
+
+    [SerializeField] AudioClip PistolSound;
+    [SerializeField] AudioClip ShottySound;
+    [SerializeField] AudioClip AKSound;
+    private AudioSource AS;
+    private float PitchDeviation;
     // Update is called once per frame
+    private void Start()
+    {
+        PitchDeviation = Random.Range(-.1f, .1f);
+        AS = GetComponent<AudioSource>();
+    }
     void Update()
     {
-
+        
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         
         Vector3 final = Vector3.zero;
@@ -114,6 +125,10 @@ public class Gun : MonoBehaviour
                 g.GetComponent<Rigidbody2D>().velocity = dir * initialBulletVel;
                 // Play pistol sound
 
+                AS.PlayOneShot(PistolSound);
+                PitchDeviation = Random.Range(-.1f, .1f);
+                AS.pitch = 1 + PitchDeviation;
+
                 onCoolDown = true;
             }
             else if(type == GunType.SHOTGUN)
@@ -147,6 +162,9 @@ public class Gun : MonoBehaviour
                 g.GetComponent<Rigidbody2D>().velocity = dir * initialBulletVel;
 
                 // Play shotgun sound
+                AS.PlayOneShot(ShottySound);
+                PitchDeviation = Random.Range(-.1f, .1f);
+                AS.pitch = 1 + PitchDeviation;
 
                 onCoolDown = true;
             }
@@ -156,6 +174,10 @@ public class Gun : MonoBehaviour
                 g.GetComponent<Bullet>().damage = 8;
                 g.GetComponent<Rigidbody2D>().velocity = dir * initialBulletVel;
                 // Play Ak47 sound
+
+                AS.PlayOneShot(AKSound);
+                PitchDeviation = Random.Range(-.1f, .1f);
+                AS.pitch = 1 + PitchDeviation;
 
                 onCoolDown = true;
             }
