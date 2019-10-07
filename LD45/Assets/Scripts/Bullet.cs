@@ -11,7 +11,7 @@ public class Bullet : MonoBehaviour
     [SerializeField]
     float currTime;
 
-    public float damage = 10f;
+    public float damage = 100f;
 
     void LateUpdate()
     {
@@ -25,6 +25,7 @@ public class Bullet : MonoBehaviour
     {
         if(other.tag == "Enemy")
         {
+            print("Hit");
             other.GetComponent<EnemyMaster>().Take_Damage(damage);
         }
 

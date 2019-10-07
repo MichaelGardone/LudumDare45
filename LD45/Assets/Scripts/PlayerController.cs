@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
 {
-
+    private PlayerInvincible playerInvincible;
     public delegate void LoseHealth(string key);
     public LoseHealth lostKey;
 
@@ -71,6 +71,7 @@ public class PlayerController : MonoBehaviour
     
     void Awake()
     {
+        playerInvincible = GetComponent<PlayerInvincible>();
         rb = GetComponent<Rigidbody2D>();
 
         TextAsset txtAsset = (TextAsset)Resources.Load("keys", typeof(TextAsset));
@@ -187,7 +188,7 @@ public class PlayerController : MonoBehaviour
                 animControl.SetInteger("y_vel", 0);
             }
 
-            if (Input.GetKey(KeyCode.A) /*&& availableKeys["A"]*/)
+            if (Input.GetKey(KeyCode.A) && availableKeys["A"])
             {
                 xVel = -Time.deltaTime * 10.0f * 20.0f;
                 animControl.SetInteger("x_vel", -1);
@@ -265,6 +266,7 @@ public class PlayerController : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        StartCoroutine(playerInvincible.WaitTilCanGetHit());
         for(int i = 0; i < damage && i < keys.Count; i++)
         {
             string s = keys.Dequeue();
