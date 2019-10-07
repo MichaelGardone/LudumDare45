@@ -14,6 +14,7 @@ public class MeleeEnemy : EnemyMaster
 
     MeleeAttack melee_attack;
 
+    Animator anim;
     //timers*************************
     [SerializeField]
     float time_until_attack;
@@ -43,6 +44,7 @@ public class MeleeEnemy : EnemyMaster
         target = GameObject.FindGameObjectWithTag("Player");
         attack_radius = GetComponentInChildren<CircleCollider2D>();
         melee_attack = GetComponentInChildren<MeleeAttack>();
+        anim = gameObject.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -54,7 +56,8 @@ public class MeleeEnemy : EnemyMaster
         Prepare_Attack();
         Check_For_Attack();
         Check_For_Stun();
-        if(is_cooldown_phase)
+        GetAnims();
+        if (is_cooldown_phase)
         {
             attack_cooldown_timer += Time.deltaTime;
             if(attack_cooldown_timer > attack_cooldown_duration)
@@ -86,6 +89,47 @@ public class MeleeEnemy : EnemyMaster
                 attack_radius.transform.position = attack_radius.transform.position+ (target.transform.position - transform.position).normalized*.5f;
             }
                 
+        }
+    }
+    float AngleBetween(Vector3 left, Vector3 right)
+    {
+        return Mathf.Atan2(left.y - right.y, left.x - right.x) * Mathf.Rad2Deg;
+    }
+    void GetAnims()
+    {
+        anim.SetBool("move", should_move);
+        float angle = AngleBetween(target.transform.position, transform.position);
+        // East
+        if (angle >= -45.001f && angle <= 45.0f)
+        {
+            anim.SetBool("east", true);
+            anim.SetBool("north", false);
+            anim.SetBool("south", false);
+            anim.SetBool("west", false);
+        }
+        // North
+        else if (angle >= 45.001f && angle <= 135.0f)
+        {
+            anim.SetBool("east", false);
+            anim.SetBool("north", true);
+            anim.SetBool("south", false);
+            anim.SetBool("west", false);
+        }
+        // West
+        else if (angle >= 135.001f || angle <= -135.001f)
+        {
+            anim.SetBool("east", false);
+            anim.SetBool("north", false);
+            anim.SetBool("south", false);
+            anim.SetBool("west", true);
+        }
+        // South
+        else if (angle >= -135.0f && angle <= -45.0f)
+        {
+            anim.SetBool("east", false);
+            anim.SetBool("north", false);
+            anim.SetBool("south", true);
+            anim.SetBool("west", false);
         }
     }
 
