@@ -19,11 +19,14 @@ public class PlayerInvincible : MonoBehaviour
     }
     IEnumerator Blink()
     {
+        print("Bilnk");
         while (player_hit)
         {
-            GetComponent<SpriteRenderer>().enabled = false;
-            yield return new WaitForSeconds(.5f);
-            GetComponent<SpriteRenderer>().enabled = true;
+            print("On");
+            GetComponent<SpriteRenderer>().enabled = !GetComponent<SpriteRenderer>().enabled;
+            yield return new WaitForSeconds(.1f);
+            
+            print("off");
         }
         
     }

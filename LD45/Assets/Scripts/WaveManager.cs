@@ -110,8 +110,11 @@ public class WaveManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (enemies_killed >= num_of_enemies)
+            levelDone = true;
         if(levelDone)
         {
+            UIManager.instance.WaveCompleted();
             //Reset Level
             enemies_killed = 0;
             levelDone = false;
