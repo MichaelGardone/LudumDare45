@@ -24,7 +24,7 @@ public class MeleeAttack : MonoBehaviour
         {
             hitPlayer = true;
             //collision.GetComponent<PlayerController>().TakeDamage(1);
-            //print("Player Hit");
+            print("Player Hit");
         }
     }
     

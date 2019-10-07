@@ -12,6 +12,9 @@ public class MeleeEnemy : EnemyMaster
     [SerializeField]
     CircleCollider2D attack_radius;
 
+    [SerializeField]
+    GameObject spark_particle;
+
     MeleeAttack melee_attack;
 
     Animator anim;
@@ -29,6 +32,9 @@ public class MeleeEnemy : EnemyMaster
 
     [SerializeField]
     float attack_cooldown_duration;
+
+    [SerializeField]
+    EntityFacing facing = EntityFacing.EAST;
     float attack_cooldown_timer = 0;
     //Bools******************************
     bool is_preparing_attack = false;
@@ -50,6 +56,7 @@ public class MeleeEnemy : EnemyMaster
     // Update is called once per frame
     void Update()
     {
+        spark_particle.transform.position = attack_radius.transform.position;
         should_move = !is_preparing_attack && !is_stunned && !is_attacking && !is_dead;
         in_attack_phase = is_preparing_attack || is_attacking || is_cooldown_phase;
         Follow_Player();
@@ -104,6 +111,7 @@ public class MeleeEnemy : EnemyMaster
         // East
         if (angle >= -45.001f && angle <= 45.0f)
         {
+            facing = EntityFacing.EAST;
             anim.SetBool("east", true);
             anim.SetBool("north", false);
             anim.SetBool("south", false);
@@ -112,6 +120,7 @@ public class MeleeEnemy : EnemyMaster
         // North
         else if (angle >= 45.001f && angle <= 135.0f)
         {
+            facing = EntityFacing.NORTH;
             anim.SetBool("east", false);
             anim.SetBool("north", true);
             anim.SetBool("south", false);
@@ -120,6 +129,7 @@ public class MeleeEnemy : EnemyMaster
         // West
         else if (angle >= 135.001f || angle <= -135.001f)
         {
+            facing = EntityFacing.WEST;
             anim.SetBool("east", false);
             anim.SetBool("north", false);
             anim.SetBool("south", false);
@@ -128,6 +138,7 @@ public class MeleeEnemy : EnemyMaster
         // South
         else if (angle >= -135.0f && angle <= -45.0f)
         {
+            facing = EntityFacing.SOUTH;
             anim.SetBool("east", false);
             anim.SetBool("north", false);
             anim.SetBool("south", true);
@@ -155,6 +166,7 @@ public class MeleeEnemy : EnemyMaster
         //print("ATTACK");
         is_attacking = true;
         attack_radius.enabled = true;
+        
 
     }
 
