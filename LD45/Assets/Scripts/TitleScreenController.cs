@@ -8,6 +8,7 @@ public class TitleScreenController : MonoBehaviour
     // Start is called before the first frame update
     public AudioSource audioSource;
     private bool starting;
+    [SerializeField] Animator animator;
     void Start()
     {
         
@@ -34,6 +35,7 @@ public class TitleScreenController : MonoBehaviour
 
     private IEnumerator LoadLevel1()
     {
+        animator.SetBool("FadeOut", true);
         while (audioSource.volume > 0) {
             audioSource.volume = audioSource.volume - .1f;
             yield return new WaitForSeconds(.1f);
