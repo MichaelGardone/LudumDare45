@@ -27,9 +27,9 @@ public class Hand : MonoBehaviour
             final.x = mousePos.x;
 
         if (mousePos.y > droog.position.y + outerRadius)
-            final.y = droog.position.x + outerRadius;
+            final.y = droog.position.y + outerRadius;
         else if(mousePos.y < droog.position.y - outerRadius)
-            final.y = droog.position.x - outerRadius;
+            final.y = droog.position.y - outerRadius;
         else
             final.y = mousePos.y;
 
