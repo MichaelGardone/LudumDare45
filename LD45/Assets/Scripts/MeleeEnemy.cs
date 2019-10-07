@@ -76,10 +76,12 @@ public class MeleeEnemy : EnemyMaster
     {
         if(Mathf.Abs(Vector2.Distance(transform.position,target.transform.position)) > distance_til_stop && should_move)
         {
+            anim.SetBool("move", true);
             transform.position += (target.transform.position - transform.position).normalized * movement_speed;
         }
         else
         {
+            anim.SetBool("move", false);
             if (!in_attack_phase && !is_dead)
             {
                 print("preparing attack");
@@ -97,7 +99,7 @@ public class MeleeEnemy : EnemyMaster
     }
     void GetAnims()
     {
-        anim.SetBool("move", should_move);
+        
         float angle = AngleBetween(target.transform.position, transform.position);
         // East
         if (angle >= -45.001f && angle <= 45.0f)
