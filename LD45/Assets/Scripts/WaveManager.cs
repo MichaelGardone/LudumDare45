@@ -66,7 +66,7 @@ public class WaveManager : MonoBehaviour
     }
     IEnumerator BeginLevel()
     {
-        yield return new WaitForSeconds(7);
+        yield return new WaitForSeconds(4);
         StartCoroutine(StartSpawning());
     }
     IEnumerator StartSpawning()

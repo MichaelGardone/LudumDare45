@@ -172,7 +172,7 @@ MonoBehaviour:
   health_bar: {fileID: 0}
   target: {fileID: 0}
   distance_til_stop: 1
-  movement_speed: 0.05
+  movement_speed: 5
   attack_radius: {fileID: 0}
   time_until_attack: 0.2
   attack_duration: 1

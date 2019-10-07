@@ -77,7 +77,7 @@ public class MeleeEnemy : EnemyMaster
         if(Mathf.Abs(Vector2.Distance(transform.position,target.transform.position)) > distance_til_stop && should_move)
         {
             anim.SetBool("move", true);
-            transform.position += (target.transform.position - transform.position).normalized * movement_speed;
+            transform.position += (target.transform.position - transform.position).normalized * movement_speed * Time.deltaTime;
         }
         else
         {
