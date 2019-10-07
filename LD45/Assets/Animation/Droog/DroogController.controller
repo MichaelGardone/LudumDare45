@@ -1095,8 +1095,8 @@ BlendTree:
     m_CycleOffset: 0
     m_DirectBlendParameter: Blend
     m_Mirror: 0
-  m_BlendParameter: east_west
-  m_BlendParameterY: north_south
+  m_BlendParameter: north_south
+  m_BlendParameterY: east_west
   m_MinThreshold: 0
   m_MaxThreshold: 0.5625
   m_UseAutomaticThresholds: 1
