@@ -991,6 +991,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae45526cdc3fae241b7cb1c51f7f7999, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosion: {fileID: 8374297697006875007, guid: 73a6d7d64a57f4b49acbc0697cdc1af8,
+    type: 3}
   facing: 2
   blinkDist: 2
   guns:
