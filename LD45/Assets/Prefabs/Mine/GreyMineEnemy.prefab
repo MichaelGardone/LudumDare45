@@ -103,10 +103,10 @@ MonoBehaviour:
   distance_til_stop: 1
   type: 0
   movement_speed: 0.05
-  bullet_speed: 1
+  bullet_speed: 4
   bullet_pref: {fileID: 6731898159749784695, guid: 8cc890cf2228afb45be0826fde104ea8,
     type: 3}
-  seconds_til_explosion: 2
+  seconds_til_explosion: 1
 --- !u!95 &8193570280914523439
 Animator:
   serializedVersion: 3

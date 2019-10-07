@@ -19,6 +19,7 @@ public class MineEnemy : EnemyMaster
     [SerializeField]
     float seconds_til_explosion;
 
+    bool detonate = false;
     Animator anim;
 
     
@@ -43,12 +44,13 @@ public class MineEnemy : EnemyMaster
 
     void Follow_Player()
     {
-        if (Mathf.Abs(Vector2.Distance(transform.position, target.transform.position)) > distance_til_stop)
+        if (Mathf.Abs(Vector2.Distance(transform.position, target.transform.position)) > distance_til_stop && !detonate)
         {
             transform.position += (target.transform.position - transform.position).normalized * movement_speed;
         }
         else
         {
+            detonate = true;
             if (!is_attacking)
                 is_dead = true;
         }
