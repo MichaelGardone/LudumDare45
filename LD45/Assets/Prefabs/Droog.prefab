@@ -837,6 +837,7 @@ GameObject:
   - component: {fileID: 1931292728689931240}
   - component: {fileID: 1931292728689931243}
   - component: {fileID: 1931292728689931242}
+  - component: {fileID: 356537608}
   m_Layer: 0
   m_Name: Droog
   m_TagString: Player
@@ -1008,6 +1009,19 @@ MonoBehaviour:
   shadowControl: {fileID: 1998992499}
   dashMax: 0
   dashCoolDown: 0
+--- !u!114 &356537608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1931292728689931244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c51f36af035600d4d953bb2c8b7ab151, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player_hit: 0
 --- !u!1001 &4652438811307452753
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -180,7 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 084515f1d1a6c7d4baf41a5436140584, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 5
   health_bar: {fileID: 0}
   target: {fileID: 0}
   distance_til_stop: 6

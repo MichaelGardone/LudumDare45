@@ -22,7 +22,7 @@ public class PlayerInvincible : MonoBehaviour
         while (player_hit)
         {
             GetComponent<SpriteRenderer>().enabled = false;
-            yield return new WaitForSeconds(.3f);
+            yield return new WaitForSeconds(.5f);
             GetComponent<SpriteRenderer>().enabled = true;
         }
         
