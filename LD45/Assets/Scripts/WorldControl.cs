@@ -43,6 +43,8 @@ public class WorldControl : MonoBehaviour
         player.GetComponent<PlayerController>().lostKey += AddKey;
     }
 
+    bool hit;
+
     // Update is called once per frame
     void Update()
     {
@@ -79,6 +81,7 @@ public class WorldControl : MonoBehaviour
                         RaycastHit ray;
                         if(Physics.Raycast(g.transform.position, player.transform.position, out ray, Mathf.Infinity, layer))
                         {
+                            hit = true;
                             Debug.Log("hello");
                         }
 

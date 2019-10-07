@@ -203,7 +203,7 @@ public class PlayerController : MonoBehaviour
 
         rb.velocity = new Vector2(xVel, yVel);
         
-        if((Input.GetMouseButton(0) && availableKeys["LMB"]) || (Input.GetMouseButton(1) && availableKeys["RMB"]))
+        if(Input.GetMouseButton(0) || Input.GetMouseButton(1))
         {
             if(guns[currWep].GetComponent<Gun>() && availableKeys[guns[currWep].name])
                 guns[currWep].GetComponent<Gun>().Shoot();
