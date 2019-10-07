@@ -1,0 +1,152 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: BG
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: 43681f6490ae2d148b5d6bfcfecb2d38, type: 3}
+    - {fileID: 21300000, guid: e92a731de013c8846b06aa430e559d11, type: 3}
+    - {fileID: 2800000, guid: e92a731de013c8846b06aa430e559d11, type: 3}
+    totalSpriteSurfaceArea: 116736
+    bindAsDefault: 1
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 5441983201098221969, guid: 43681f6490ae2d148b5d6bfcfecb2d38, type: 3}
+  - {fileID: -3065705885415754770, guid: 43681f6490ae2d148b5d6bfcfecb2d38, type: 3}
+  - {fileID: 9209750841708879129, guid: 43681f6490ae2d148b5d6bfcfecb2d38, type: 3}
+  - {fileID: -3377022572394646605, guid: 43681f6490ae2d148b5d6bfcfecb2d38, type: 3}
+  - {fileID: 3569295529688771873, guid: 43681f6490ae2d148b5d6bfcfecb2d38, type: 3}
+  - {fileID: 2129049320484292136, guid: 43681f6490ae2d148b5d6bfcfecb2d38, type: 3}
+  - {fileID: 4528679384402733226, guid: 43681f6490ae2d148b5d6bfcfecb2d38, type: 3}
+  - {fileID: -8052478528366185871, guid: 43681f6490ae2d148b5d6bfcfecb2d38, type: 3}
+  - {fileID: 6805221370377706705, guid: 43681f6490ae2d148b5d6bfcfecb2d38, type: 3}
+  - {fileID: -8785116381839606322, guid: 43681f6490ae2d148b5d6bfcfecb2d38, type: 3}
+  - {fileID: 7148157525692020765, guid: 43681f6490ae2d148b5d6bfcfecb2d38, type: 3}
+  - {fileID: -7733685587795598876, guid: 43681f6490ae2d148b5d6bfcfecb2d38, type: 3}
+  - {fileID: -7175999513555718791, guid: 43681f6490ae2d148b5d6bfcfecb2d38, type: 3}
+  - {fileID: 1450281570120847727, guid: 43681f6490ae2d148b5d6bfcfecb2d38, type: 3}
+  - {fileID: 1733557627887526964, guid: 43681f6490ae2d148b5d6bfcfecb2d38, type: 3}
+  - {fileID: 9130791040285055210, guid: 43681f6490ae2d148b5d6bfcfecb2d38, type: 3}
+  - {fileID: 8664909086348810664, guid: 43681f6490ae2d148b5d6bfcfecb2d38, type: 3}
+  - {fileID: -368743205301441138, guid: 43681f6490ae2d148b5d6bfcfecb2d38, type: 3}
+  - {fileID: 2047348774374935349, guid: 43681f6490ae2d148b5d6bfcfecb2d38, type: 3}
+  - {fileID: -6845839113603886534, guid: 43681f6490ae2d148b5d6bfcfecb2d38, type: 3}
+  - {fileID: -6504969321153170704, guid: 43681f6490ae2d148b5d6bfcfecb2d38, type: 3}
+  - {fileID: 188334006617983522, guid: 43681f6490ae2d148b5d6bfcfecb2d38, type: 3}
+  - {fileID: 1788284625466392202, guid: 43681f6490ae2d148b5d6bfcfecb2d38, type: 3}
+  - {fileID: -4850972463613286725, guid: 43681f6490ae2d148b5d6bfcfecb2d38, type: 3}
+  - {fileID: 7138210057561355545, guid: 43681f6490ae2d148b5d6bfcfecb2d38, type: 3}
+  - {fileID: -6968938428940038430, guid: 43681f6490ae2d148b5d6bfcfecb2d38, type: 3}
+  - {fileID: 5984740485188337191, guid: 43681f6490ae2d148b5d6bfcfecb2d38, type: 3}
+  - {fileID: -4105503439642734663, guid: 43681f6490ae2d148b5d6bfcfecb2d38, type: 3}
+  - {fileID: 1742785148982711840, guid: 43681f6490ae2d148b5d6bfcfecb2d38, type: 3}
+  - {fileID: 1370176660479748876, guid: 43681f6490ae2d148b5d6bfcfecb2d38, type: 3}
+  - {fileID: -8222610311842003438, guid: 43681f6490ae2d148b5d6bfcfecb2d38, type: 3}
+  - {fileID: -1526099684846448138, guid: 43681f6490ae2d148b5d6bfcfecb2d38, type: 3}
+  - {fileID: 8785397867823974336, guid: 43681f6490ae2d148b5d6bfcfecb2d38, type: 3}
+  - {fileID: 5388451540310983593, guid: 43681f6490ae2d148b5d6bfcfecb2d38, type: 3}
+  - {fileID: 818088504795527549, guid: 43681f6490ae2d148b5d6bfcfecb2d38, type: 3}
+  - {fileID: 3095928174072820154, guid: 43681f6490ae2d148b5d6bfcfecb2d38, type: 3}
+  - {fileID: -558147519687124405, guid: 43681f6490ae2d148b5d6bfcfecb2d38, type: 3}
+  - {fileID: -501634809278982521, guid: 43681f6490ae2d148b5d6bfcfecb2d38, type: 3}
+  - {fileID: 5980394232138606188, guid: 43681f6490ae2d148b5d6bfcfecb2d38, type: 3}
+  - {fileID: 9183415357368926435, guid: 43681f6490ae2d148b5d6bfcfecb2d38, type: 3}
+  - {fileID: 6655829768359967145, guid: 43681f6490ae2d148b5d6bfcfecb2d38, type: 3}
+  - {fileID: 3423783596202026104, guid: 43681f6490ae2d148b5d6bfcfecb2d38, type: 3}
+  - {fileID: 4598070345415809096, guid: 43681f6490ae2d148b5d6bfcfecb2d38, type: 3}
+  - {fileID: -2828929017918448689, guid: 43681f6490ae2d148b5d6bfcfecb2d38, type: 3}
+  - {fileID: -7319250727317106543, guid: 43681f6490ae2d148b5d6bfcfecb2d38, type: 3}
+  - {fileID: -4203045798846300014, guid: 43681f6490ae2d148b5d6bfcfecb2d38, type: 3}
+  - {fileID: 4062560167204815744, guid: 43681f6490ae2d148b5d6bfcfecb2d38, type: 3}
+  - {fileID: 1382012446459987350, guid: 43681f6490ae2d148b5d6bfcfecb2d38, type: 3}
+  - {fileID: -3973932502367320649, guid: 43681f6490ae2d148b5d6bfcfecb2d38, type: 3}
+  - {fileID: 8677582162583586583, guid: 43681f6490ae2d148b5d6bfcfecb2d38, type: 3}
+  - {fileID: -6911605540912778876, guid: 43681f6490ae2d148b5d6bfcfecb2d38, type: 3}
+  - {fileID: -4102168524580681326, guid: 43681f6490ae2d148b5d6bfcfecb2d38, type: 3}
+  - {fileID: -6199472147244460643, guid: 43681f6490ae2d148b5d6bfcfecb2d38, type: 3}
+  - {fileID: 8921676448362898236, guid: 43681f6490ae2d148b5d6bfcfecb2d38, type: 3}
+  - {fileID: 21300000, guid: e92a731de013c8846b06aa430e559d11, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Factory_15
+  - Factory_46
+  - Factory_14
+  - Factory_47
+  - Factory_17
+  - Factory_44
+  - Factory_16
+  - Factory_45
+  - Factory_11
+  - Factory_42
+  - Factory_10
+  - Factory_43
+  - Factory_13
+  - Factory_40
+  - Factory_12
+  - Factory_41
+  - Factory_51
+  - Factory_19
+  - Factory_50
+  - Factory_18
+  - Factory_53
+  - Factory_48
+  - Factory_52
+  - Factory_49
+  - Factory_28
+  - Factory_29
+  - Factory_24
+  - Factory_25
+  - Factory_39
+  - Factory_26
+  - Factory_38
+  - Factory_27
+  - Factory_37
+  - Factory_6
+  - Factory_20
+  - Factory_36
+  - Factory_7
+  - Factory_21
+  - Factory_35
+  - Factory_4
+  - Factory_22
+  - Factory_34
+  - Factory_5
+  - Factory_23
+  - Factory_33
+  - Factory_2
+  - Factory_32
+  - Factory_3
+  - Factory_31
+  - Factory_0
+  - Factory_30
+  - Factory_1
+  - Factory_8
+  - Factory_9
+  - Factory 1
+  m_Tag: BG
+  m_IsVariant: 0
