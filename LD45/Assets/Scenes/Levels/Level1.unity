@@ -621,7 +621,12 @@ PrefabInstance:
     - target: {fileID: 1931292728689931242, guid: 6e0db3a19bc8ba9458e8da7cf895fccb,
         type: 3}
       propertyPath: dashSpeed
-      value: 20
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1931292728689931242, guid: 6e0db3a19bc8ba9458e8da7cf895fccb,
+        type: 3}
+      propertyPath: blinkDist
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e0db3a19bc8ba9458e8da7cf895fccb, type: 3}

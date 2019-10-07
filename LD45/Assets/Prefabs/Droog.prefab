@@ -266,8 +266,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   facing: 2
-  blinkDist: 20
-  dashSpeed: 10
+  blinkDist: 10
+  dashSpeed: 5
   initialBulletVel: 20
   bulletPref: {fileID: 6731898159749784695, guid: ce82ae3e14c984f40b3eee7abe56ec0f,
     type: 3}
