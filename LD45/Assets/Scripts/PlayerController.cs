@@ -176,13 +176,13 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKey(KeyCode.W) && availableKeys["W"])
             {
                 //yVel = Time.deltaTime * 10.0f * 40.0f;
-                transform.position = new Vector3(transform.position.x, transform.position.y + 0.15f, 0);
+                transform.position = new Vector3(transform.position.x, transform.position.y + 5f * Time.deltaTime, 0);
                 animControl.SetInteger("y_vel", 1);
             }
             else if(Input.GetKey(KeyCode.S) && availableKeys["S"])
             {
                 //yVel = -Time.deltaTime * 10.0f * 40.0f;
-                transform.position = new Vector3(transform.position.x, transform.position.y - 0.15f, 0);
+                transform.position = new Vector3(transform.position.x, transform.position.y - 5f * Time.deltaTime, 0);
                 animControl.SetInteger("y_vel", -1);
             }
             else
@@ -194,13 +194,13 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKey(KeyCode.A) && availableKeys["A"])
             {
                 //xVel = -Time.deltaTime * 10.0f * 40.0f;
-                transform.position = new Vector3(transform.position.x - 0.15f, transform.position.y, 0);
+                transform.position = new Vector3(transform.position.x - 5f * Time.deltaTime, transform.position.y, 0);
                 animControl.SetInteger("x_vel", -1);
             }
             else if (Input.GetKey(KeyCode.D) && availableKeys["D"])
             {
                 //xVel = Time.deltaTime * 10.0f * 40.0f;
-                transform.position = new Vector3(transform.position.x + 0.15f, transform.position.y, 0);
+                transform.position = new Vector3(transform.position.x + 5f * Time.deltaTime, transform.position.y, 0);
                 animControl.SetInteger("x_vel", 1);
             }
             else

@@ -24,22 +24,22 @@ public class Border : MonoBehaviour
         {
             if (facing == EntityFacing.NORTH)
             {
-                collision.transform.position = new Vector3(collision.transform.position.x, collision.transform.position.y - 5, collision.transform.position.z);
+                collision.transform.position = new Vector3(collision.transform.position.x, collision.transform.position.y - 2, collision.transform.position.z);
                 collision.GetComponent<PlayerController>().dashOn = false;
             }
             else if (facing == EntityFacing.EAST)
             {
-                collision.transform.position = new Vector3(collision.transform.position.x-5, collision.transform.position.y, collision.transform.position.z);
+                collision.transform.position = new Vector3(collision.transform.position.x-2, collision.transform.position.y, collision.transform.position.z);
                 collision.GetComponent<PlayerController>().dashOn = false;
             }
             else if (facing == EntityFacing.WEST)
             {
-                collision.transform.position = new Vector3(collision.transform.position.x + 5, collision.transform.position.y, collision.transform.position.z);
+                collision.transform.position = new Vector3(collision.transform.position.x + 2, collision.transform.position.y, collision.transform.position.z);
                 collision.GetComponent<PlayerController>().dashOn = false;
             }
             else if (facing == EntityFacing.SOUTH)
             {
-                collision.transform.position = new Vector3(collision.transform.position.x, collision.transform.position.y+5, collision.transform.position.z);
+                collision.transform.position = new Vector3(collision.transform.position.x, collision.transform.position.y+2, collision.transform.position.z);
                 collision.GetComponent<PlayerController>().dashOn = false;
             }
 
