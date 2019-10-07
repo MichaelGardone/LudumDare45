@@ -19,18 +19,24 @@ public class MineEnemy : EnemyMaster
     [SerializeField]
     float seconds_til_explosion;
 
+    Animator anim;
+
     
     // Start is called before the first frame update
     void Start()
     {
         health_bar = gameObject.GetComponent<Slider>();
         target = GameObject.FindGameObjectWithTag("Player");
+        anim = gameObject.GetComponent<Animator>();
+        anim.SetBool("is_following", false);
     }
 
     // Update is called once per frame
     void Update()
     {
         Follow_Player();
+        if (is_dead)
+            StartCoroutine(Wait_Til_Explosion());
     }
 
     void Follow_Player()
@@ -42,12 +48,12 @@ public class MineEnemy : EnemyMaster
         else
         {
             if (!is_attacking)
-                StartCoroutine(Wait_Til_Explosion());
+                is_dead = true;
         }
     }
     IEnumerator Wait_Til_Explosion()
     {
-        
+        anim.SetBool("is_following", true);
         yield return new WaitForSeconds(seconds_til_explosion);
         Shoot_Bullets();
         

@@ -132,6 +132,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigMeleeEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 2477608427169897056, guid: b2b9a75cb67d2a045a2b6802d4b07dc9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2477608427169897060, guid: b2b9a75cb67d2a045a2b6802d4b07dc9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -304,6 +309,11 @@ PrefabInstance:
     - target: {fileID: 2942005422808463670, guid: 175ccf59ec2901743948800df14c2309,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2942005422808463664, guid: 175ccf59ec2901743948800df14c2309,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -490,6 +500,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ProjectileEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 2380917564121189245, guid: 634c48dc6e51c4e499894fdc751373d5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2380917564121189246, guid: 634c48dc6e51c4e499894fdc751373d5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -567,7 +582,7 @@ PrefabInstance:
     - target: {fileID: 6998803214829635628, guid: 363c66e05a1cfbc4ead2675499383642,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.2741977
+      value: 4.5
       objectReference: {fileID: 0}
     - target: {fileID: 6998803214829635628, guid: 363c66e05a1cfbc4ead2675499383642,
         type: 3}
@@ -627,6 +642,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SmallMeleeEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 2477608427169897056, guid: 9a34fe3502e69ef48ba664112016939e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2477608427169897060, guid: 9a34fe3502e69ef48ba664112016939e,
         type: 3}
