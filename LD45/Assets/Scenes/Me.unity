@@ -195,12 +195,12 @@ PrefabInstance:
     - target: {fileID: 2477608427169897060, guid: b2b9a75cb67d2a045a2b6802d4b07dc9,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 6.2609468
+      value: 2.25
       objectReference: {fileID: 0}
     - target: {fileID: 2477608427169897060, guid: b2b9a75cb67d2a045a2b6802d4b07dc9,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -3.961067
+      value: -4.11
       objectReference: {fileID: 0}
     - target: {fileID: 2477608427169897060, guid: b2b9a75cb67d2a045a2b6802d4b07dc9,
         type: 3}
@@ -259,12 +259,12 @@ PrefabInstance:
     - target: {fileID: 1931292728689931241, guid: 6e0db3a19bc8ba9458e8da7cf895fccb,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.02
+      value: 0.09
       objectReference: {fileID: 0}
     - target: {fileID: 1931292728689931241, guid: 6e0db3a19bc8ba9458e8da7cf895fccb,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.91
+      value: 2.13
       objectReference: {fileID: 0}
     - target: {fileID: 1931292728689931241, guid: 6e0db3a19bc8ba9458e8da7cf895fccb,
         type: 3}
@@ -379,31 +379,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &743257375 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2477608427169897056, guid: b2b9a75cb67d2a045a2b6802d4b07dc9,
-    type: 3}
-  m_PrefabInstance: {fileID: 394921845}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &743257376
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 743257375}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c68850c1d935581498f1692c661b98d2, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &818490712
 GameObject:
   m_ObjectHideFlags: 0
@@ -594,6 +569,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SmallMeleeEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 2477608427169897056, guid: 9a34fe3502e69ef48ba664112016939e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2477608427169897060, guid: 9a34fe3502e69ef48ba664112016939e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -652,7 +632,7 @@ PrefabInstance:
     - target: {fileID: 2477608427169897060, guid: 9a34fe3502e69ef48ba664112016939e,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -6.39
+      value: 0.53
       objectReference: {fileID: 0}
     - target: {fileID: 2477608427169897060, guid: 9a34fe3502e69ef48ba664112016939e,
         type: 3}
