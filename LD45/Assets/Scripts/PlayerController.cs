@@ -129,19 +129,19 @@ public class PlayerController : MonoBehaviour
             switch (facing)
             {
                 case EntityFacing.EAST:
-                    targetDash = new Vector3(gameObject.transform.position.x + blinkDist, gameObject.transform.position.y, 0);
+                    targetDash = new Vector3(gameObject.transform.position.x + blinkDist, gameObject.transform.position.y, -1);
                     animControl.SetInteger("x_vel", 1);
                     break;
                 case EntityFacing.NORTH:
-                    targetDash = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + blinkDist, 0);
+                    targetDash = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + blinkDist, -1);
                     animControl.SetInteger("y_vel", 1);
                     break;
                 case EntityFacing.SOUTH:
-                    targetDash = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - blinkDist, 0);
+                    targetDash = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - blinkDist, -1);
                     animControl.SetInteger("y_vel", -1);
                     break;
                 case EntityFacing.WEST:
-                    targetDash = new Vector3(gameObject.transform.position.x - blinkDist, gameObject.transform.position.y, 0);
+                    targetDash = new Vector3(gameObject.transform.position.x - blinkDist, gameObject.transform.position.y, -1);
                     animControl.SetInteger("x_vel", -1);
                     break;
             }
@@ -203,18 +203,24 @@ public class PlayerController : MonoBehaviour
 
         rb.velocity = new Vector2(xVel, yVel);
         
-        if((Input.GetMouseButton(0) /*&& availableKeys["LMB"]*/) || (Input.GetMouseButton(1) && availableKeys["RMB"]))
+        if((Input.GetMouseButton(0) && availableKeys["LMB"]) || (Input.GetMouseButton(1) && availableKeys["RMB"]))
         {
-            if(guns[currWep].GetComponent<Gun>())
+            if(guns[currWep].GetComponent<Gun>() && availableKeys[guns[currWep].name])
                 guns[currWep].GetComponent<Gun>().Shoot();
         }
 
-        if(Input.GetAxis("Mouse ScrollWheel") > 0f/* && availableKeys["SCROLL"]*/)
+        if(Input.GetAxis("Mouse ScrollWheel") > 0f && availableKeys["SCROLL"])
         {
             guns[currWep].GetComponent<SpriteRenderer>().enabled = false;
             currWep++;
             if (currWep >= guns.Length)
                 currWep = 0;
+            while (availableKeys[guns[currWep].name])
+            {
+                currWep++;
+                if (currWep > guns.Length)
+                    currWep = 0;
+            }
             guns[currWep].GetComponent<SpriteRenderer>().enabled = true;
         }
         else if(Input.GetAxis("Mouse ScrollWheel") < 0f && availableKeys["SCROLL"])
@@ -223,6 +229,12 @@ public class PlayerController : MonoBehaviour
             currWep--;
             if (currWep < 0)
                 currWep = guns.Length - 1;
+            while (availableKeys[guns[currWep].name])
+            {
+                currWep--;
+                if (currWep < 0)
+                    currWep = guns.Length - 1;
+            }
             guns[currWep].GetComponent<SpriteRenderer>().enabled = true;
         }
 

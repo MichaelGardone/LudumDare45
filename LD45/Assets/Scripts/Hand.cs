@@ -13,7 +13,6 @@ public class Hand : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         
         Vector3 final = Vector3.zero;
@@ -34,9 +33,6 @@ public class Hand : MonoBehaviour
             final.y = mousePos.y;
 
         transform.position = final;
-
-
-
     }
 
 }
