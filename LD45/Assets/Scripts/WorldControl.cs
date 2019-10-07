@@ -42,9 +42,7 @@ public class WorldControl : MonoBehaviour
 
         player.GetComponent<PlayerController>().lostKey += AddKey;
     }
-
-    bool hit;
-
+    
     // Update is called once per frame
     void Update()
     {
@@ -66,8 +64,8 @@ public class WorldControl : MonoBehaviour
                     {
                         int rand = new int[] { -1, 1 }[Random.Range(0, 1)];
                         int rand2 = new int[] { -1, 1 }[Random.Range(0, 1)];
-                        float x = Random.Range(rand * 10, rand * 30);
-                        float y = Random.Range(rand2 * 10, rand2 * 30);
+                        float x = Random.Range(rand * 5, rand * 5);
+                        float y = Random.Range(rand2 * 5, rand2 * 5);
 
                         Vector3 position = new Vector3(x, y, 0);
 
@@ -77,12 +75,12 @@ public class WorldControl : MonoBehaviour
                         {
                             g.transform.position = new Vector3(player.transform.position.x + 2, player.transform.position.y, -1);
                         }
-                        
-                        RaycastHit ray;
-                        if(Physics2D.Raycast(g.transform.position, player.transform.position, out ray, Mathf.Infinity, layer))
+
+                        RaycastHit2D hit = Physics2D.Raycast(g.transform.position, player.transform.position, layer);
+                        if (hit.collider != null)
                         {
-                            hit = true;
-                            Debug.Log("hello");
+                            g.transform.position = new Vector3(player.transform.position.x - 2, player.transform.position.y, -1);
+
                         }
 
                         g.GetComponent<Key>().callback += RemoveKey;
