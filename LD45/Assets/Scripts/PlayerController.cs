@@ -20,6 +20,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     float blinkDist = 20.0f;
 
+    [SerializeField]
+    GameObject[] guns;
+
+    int currWep = 3;
+
     public float BlinkDist
     {
         get
@@ -60,9 +65,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     float dashCoolDown = 0.0f;
-
-
-    // Start is called before the first frame update
+    
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -75,7 +78,6 @@ public class PlayerController : MonoBehaviour
 
         foreach (string s in keyFile)
             availableKeys.Add(s.Trim(), false);
-        
     }
     
     void Update()
@@ -201,15 +203,27 @@ public class PlayerController : MonoBehaviour
 
         rb.velocity = new Vector2(xVel, yVel);
         
-        if((Input.GetMouseButtonDown(0) && availableKeys["LMB"]) || (Input.GetMouseButtonDown(1) && availableKeys["RMB"]))
+        if((Input.GetMouseButton(0) && availableKeys["LMB"]) || (Input.GetMouseButton(1) && availableKeys["RMB"]))
         {
-            Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Vector2 dir = mouseWorldPos - new Vector2(transform.transform.position.x, transform.transform.position.y);
-            dir.Normalize();
+            if(guns[currWep].GetComponent<Gun>())
+                guns[currWep].GetComponent<Gun>().Shoot();
+        }
 
-            GameObject g = Instantiate(bulletPref, transform.position, Quaternion.identity);
-            
-            g.GetComponent<Rigidbody2D>().velocity = dir * initialBulletVel;
+        if(Input.GetAxis("Mouse ScrollWheel") > 0f && availableKeys["SCROLL"])
+        {
+            guns[currWep].GetComponent<SpriteRenderer>().enabled = false;
+            currWep++;
+            if (currWep >= guns.Length)
+                currWep = 0;
+            guns[currWep].GetComponent<SpriteRenderer>().enabled = true;
+        }
+        else if(Input.GetAxis("Mouse ScrollWheel") < 0f && availableKeys["SCROLL"])
+        {
+            guns[currWep].GetComponent<SpriteRenderer>().enabled = false;
+            currWep--;
+            if (currWep < 0)
+                currWep = guns.Length - 1;
+            guns[currWep].GetComponent<SpriteRenderer>().enabled = true;
         }
 
         if (keys.Count > 1)

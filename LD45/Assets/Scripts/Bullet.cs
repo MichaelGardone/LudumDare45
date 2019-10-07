@@ -18,4 +18,12 @@ public class Bullet : MonoBehaviour
         if (currTime >= maxTimeUntilDisappear)
             Destroy(gameObject);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Enemy")
+        {
+            // Do damage
+        }
+    }
 }

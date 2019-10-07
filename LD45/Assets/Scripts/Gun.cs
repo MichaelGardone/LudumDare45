@@ -19,7 +19,24 @@ public class Gun : MonoBehaviour
 
     [SerializeField]
     GunType type;
-    
+
+    [SerializeField]
+    float initialBulletVel = 20.0f;
+
+    [SerializeField]
+    GameObject bulletPref;
+
+    [SerializeField]
+    float maxTimer = 5f;
+
+    [SerializeField]
+    float currTime;
+
+    bool onCoolDown = false;
+
+    [SerializeField]
+    Transform start;
+
     // Update is called once per frame
     void Update()
     {
@@ -63,11 +80,55 @@ public class Gun : MonoBehaviour
             transform.rotation = Quaternion.Euler(new Vector3(180f, 0, angle));
         }
 
+        if(onCoolDown)
+            currTime += Time.deltaTime;
+
+        if(currTime >= maxTimer)
+        {
+            currTime = 0f;
+            onCoolDown = false;
+        }
+
     }
 
     float AngleBetween(Vector3 left, Vector3 right)
     {
         return Mathf.Atan2(left.y - right.y, left.x - right.x) * Mathf.Rad2Deg;
+    }
+
+    public void Shoot()
+    {
+        Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 dir = mouseWorldPos - new Vector2(transform.transform.position.x, transform.transform.position.y);
+        dir.Normalize();
+        
+        if(!onCoolDown)
+        {
+            if (type == GunType.PISTOL)
+            {
+                GameObject g = Instantiate(bulletPref, start.position, Quaternion.identity);
+                g.GetComponent<Rigidbody2D>().velocity = dir * initialBulletVel;
+                // Play pistol sound
+
+                onCoolDown = true;
+            }
+            else if(type == GunType.SHOTGUN)
+            {
+                GameObject g = Instantiate(bulletPref, start.position, Quaternion.identity);
+                g.GetComponent<Rigidbody2D>().velocity = dir * initialBulletVel;
+                // Play shotgun sound
+
+                onCoolDown = true;
+            }
+            else if(type == GunType.AK47)
+            {
+                GameObject g = Instantiate(bulletPref, start.position, Quaternion.identity);
+                g.GetComponent<Rigidbody2D>().velocity = dir * initialBulletVel;
+                // Play Ak47 sound
+
+                onCoolDown = true;
+            }
+        }
     }
 
 }
