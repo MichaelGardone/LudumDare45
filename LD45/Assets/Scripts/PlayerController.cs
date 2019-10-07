@@ -13,6 +13,9 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     public Queue<string> keys = new Queue<string>();
+
+    [SerializeField]
+    private GameObject explosion;
     
     [SerializeField]
     EntityFacing facing = EntityFacing.EAST;
@@ -270,6 +273,8 @@ public class PlayerController : MonoBehaviour
 
         if(keys.Count == 0)
         {
+            Instantiate(explosion, transform.position, Quaternion.identity);
+            GetComponent<SpriteRenderer>().enabled = false;
             Debug.Log("## PLAYER IS DEAD!! ##");
             UIManager.instance.GameOver();
         }
